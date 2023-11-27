@@ -2,8 +2,8 @@ import { MainText, WilsonText } from "./utilities";
 import Image from "next/image";
 export default function Hero() {
   return (
-    <section className="">
-      <div className="relative z-10 max-w-xl mx-auto px-8 sm:px-0">
+    <section className="relative">
+      <div className="relative z-10 max-w-xl mx-auto px-8 sm:px-0 pt-40">
         <MainText title="Who the hell is VSSL?" />
         <p className="elza text-white relative text-lg pt-80 sm:pt-56">
           We&apos;re a crew of digital marketing creatives, builders, and
@@ -20,7 +20,7 @@ export default function Hero() {
           width={1500}
           height={1500}
           alt="Pirates hanging out on the deck"
-          className="grid-in-pirates pl-52"
+          className="grid-in-pirates pl-52 opacity-75"
         />
         <Image
           src="/images/hero/shaka.png"
@@ -34,7 +34,7 @@ export default function Hero() {
           width={500}
           height={500}
           alt="Person walking on the beach"
-          className="grid-in-storm pl-32"
+          className="grid-in-storm pl-32 transition-all duration-300 opacity-50 xl:opacity-100"
         />
         <div className="grid-in-coin relative pt-10">
           <Image
@@ -42,6 +42,7 @@ export default function Hero() {
             width={300}
             height={300}
             alt="VSSL Challenge coin"
+            className="transition-all duration-300 opacity-50 lg:opacity-100"
           />
           <WilsonText
             title="We're not pirates but we're salty as shit"

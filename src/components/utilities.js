@@ -40,3 +40,24 @@ export function WilsonText(props) {
     </h4>
   );
 }
+
+// Gin subheaders
+export function SecondaryText(props) {
+  return (
+    <h2 className="text-smoke text-6xl font-medium gin-regular mb-4">
+      {props.title}
+    </h2>
+  );
+}
+
+// Gin callout cards
+export function GinCard(props) {
+  return (
+    <div className="border border-ink transition-all duration-300 hover:-rotate-2">
+      <h5 className="text-ink gin-regular text-xl border-b border-ink py-3 px-4">
+        {props.title}
+      </h5>
+      <p className="text-smoke text-sm elza py-4 px-4">{props.description}</p>
+    </div>
+  );
+}
