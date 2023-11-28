@@ -1,7 +1,7 @@
 import Image from "next/image";
 export default function Header() {
   return (
-    <nav className="px-10 lg:px-20 absolute top-0 left-0">
+    <nav className="px-10 lg:px-20 absolute top-0 left-0 z-10">
       <Image
         src="/images/vssl-logo.svg"
         alt="VSSL logo"

@@ -5,7 +5,7 @@ export default function Hero() {
     <section className="relative">
       <div className="relative z-10 max-w-xl mx-auto px-8 sm:px-0 pt-40">
         <MainText title="Who the hell is VSSL?" />
-        <p className="elza text-white relative text-lg pt-80 sm:pt-56">
+        <p className="elza text-white relative text-sm md:text-base pt-80 sm:pt-56">
           We&apos;re a crew of digital marketing creatives, builders, and
           strategists that know how to make brands stand out. We identify and
           amplify what makes your brand unique in order to make waves and sink

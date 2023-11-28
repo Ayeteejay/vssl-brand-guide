@@ -15,16 +15,16 @@ export default function Positioning() {
     },
   ];
   return (
-    <section className="max-w-5xl mx-auto px-8 relative mt-10 md:mt-52 lg:mt-80">
+    <section className="max-w-5xl mx-auto px-8 relative mt-10 md:mt-52 lg:mt-80 z-10">
       <div className="bg-bronze p-10 md:p-20 grid md:grid-cols-5 gap-5 md:gap-10 items-center">
         <div className="md:col-span-3">
           <SecondaryText title={"Positioning"} />
-          <p className="elza text-sm text-ink">
+          <p className="elza text-sm md:text-base text-ink">
             VSSL builds brands, invents campaigns, and creates websites for
             growth-oriented B2B businesses. With our brand-first approach,
             companies can:
           </p>
-          <ul className="text-sm text-smoke mt-5">
+          <ul className="text-sm md:text-base text-smoke mt-5">
             <li className="mb-3">
               <strong>Stand out</strong> in their market with a distinct,
               ownable position

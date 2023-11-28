@@ -1,4 +1,5 @@
 import Header from "@/components/header";
+import Distressed from "@/components/distressed";
 import "./globals.css";
 
 export const metadata = {
@@ -12,6 +13,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className="bg-ink">
       <body>
         <Header />
+        <Distressed/>
         <main>{children}</main>
       </body>
     </html>

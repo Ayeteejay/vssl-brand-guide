@@ -53,11 +53,36 @@ export function SecondaryText(props) {
 // Gin callout cards
 export function GinCard(props) {
   return (
-    <div className="border border-ink transition-all duration-300 hover:-rotate-2">
-      <h5 className="text-ink gin-regular text-xl border-b border-ink py-3 px-4">
+    <div className="border border-ink transition-all duration-300 md:hover:-rotate-2">
+      <h5 className="text-ink gin-regular text-2xl border-b border-ink py-3 px-4">
         {props.title}
       </h5>
-      <p className="text-smoke text-sm elza py-4 px-4">{props.description}</p>
+      <p className="text-smoke text-sm md:text-base elza py-4 px-4">
+        {props.description}
+      </p>
+    </div>
+  );
+}
+
+// Profile cards
+export function ProfileCard(props) {
+  return (
+    <div>
+      <h5 className="text-bronze gin-regular text-2xl">{props.title}</h5>
+      <p className="text-smoke text-sm md:text-base elza my-3">
+        {props.description}
+      </p>
+      {props.bullets && (
+        <ul className="text-smoke text-sm md:text-base">
+          {props.bullets.map((bullet) => {
+            return (
+              <li key={bullet.id} className="mb-3">
+                {bullet.description}
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </div>
   );
 }
