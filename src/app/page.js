@@ -1,6 +1,7 @@
 import Hero from "@/components/hero";
 import Positioning from "@/components/positioning";
 import Persona from "@/components/persona";
+import Values from "@/components/values";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <Hero />
       <Positioning />
       <Persona />
+      <Values />
     </div>
   );
 }

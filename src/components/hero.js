@@ -21,6 +21,7 @@ export default function Hero() {
           height={1500}
           alt="Pirates hanging out on the deck"
           className="grid-in-pirates pl-52 opacity-75"
+          priority={true}
         />
         <Image
           src="/images/hero/shaka.png"
@@ -42,7 +43,7 @@ export default function Hero() {
             width={300}
             height={300}
             alt="VSSL Challenge coin"
-            className="transition-all duration-300 opacity-50 lg:opacity-100"
+            className="transition-all duration-300 opacity-50 lg:opacity-100 w-full h-auto"
           />
           <WilsonText
             title="We're not pirates but we're salty as shit"

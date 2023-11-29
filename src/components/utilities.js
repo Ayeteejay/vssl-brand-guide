@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 
 // Texturized Gin headers
 export function MainText(props) {
@@ -44,7 +45,9 @@ export function WilsonText(props) {
 // Gin subheaders
 export function SecondaryText(props) {
   return (
-    <h2 className="text-smoke text-6xl font-medium gin-regular mb-4">
+    <h2
+      className={`text-smoke text-6xl font-medium gin-regular mb-4 ${props.styles}`}
+    >
       {props.title}
     </h2>
   );
@@ -83,6 +86,37 @@ export function ProfileCard(props) {
           })}
         </ul>
       )}
+    </div>
+  );
+}
+
+// Values cards
+export function ValueCard(props) {
+  return (
+    <div className="flex gap-10 md:gap-20 flex-col md:flex-row items-center">
+      <Image
+        src={props.image.src}
+        height={300}
+        width={300}
+        alt={props.image.alt}
+      />
+      <div>
+        <h5 className="text-smoke gin-regular text-2xl">{props.title}</h5>
+        <p className="text-smoke text-sm md:text-base elza my-3">
+          {props.description}
+        </p>
+        {props.bullets && (
+          <ul className="text-smoke text-sm md:text-base">
+            {props.bullets.map((bullet) => {
+              return (
+                <li key={bullet.id} className="mb-3">
+                  {bullet.description}
+                </li>
+              );
+            })}
+          </ul>
+        )}
+      </div>
     </div>
   );
 }
