@@ -25,6 +25,8 @@ module.exports = {
           "shaka shaka storm coin coin",
           ". . storm coin coin",
         ],
+        voice: ["painting painting dog", "painting painting boat"],
+        grit: ["fish fish .", ". crust crust", "cliff cliff ."],
       },
     },
   },

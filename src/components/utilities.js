@@ -106,7 +106,7 @@ export function ValueCard(props) {
           {props.description}
         </p>
         {props.bullets && (
-          <ul className="text-smoke text-sm md:text-base">
+          <ul className="text-smoke text-sm md:text-base elza">
             {props.bullets.map((bullet) => {
               return (
                 <li key={bullet.id} className="mb-3">
