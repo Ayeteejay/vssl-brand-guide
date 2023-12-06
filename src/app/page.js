@@ -5,6 +5,8 @@ import Values from "@/components/values";
 import Voice from "@/components/voice";
 import Boilerplate from "@/components/boilerplate";
 import Grit from "@/components/grit";
+import Logos from "@/components/logo";
+import Typography from "@/components/typography";
 
 export default function Home() {
   return (
@@ -16,6 +18,8 @@ export default function Home() {
       <Voice />
       <Boilerplate />
       <Grit />
+      <Logos />
+      <Typography />
     </div>
   );
 }

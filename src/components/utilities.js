@@ -5,10 +5,8 @@ import Image from "next/image";
 // Texturized Gin headers
 export function MainText(props) {
   return (
-    <h1 className="text-8xl relative">
-      <span className="gin-regular text-white absolute top-0 left-0">
+    <h1 className="text-8xl relative gin-regular text-white">      
         {props.title}
-      </span>
       <span className="gin-lines text-bronze absolute top-[2px] left-[2px] opacity-40">
         {props.title}
       </span>
@@ -118,5 +116,17 @@ export function ValueCard(props) {
         )}
       </div>
     </div>
+  );
+}
+
+// Bronze circular buttons
+export function BronzeButton(props) {
+  return (
+    <a
+      href={props.link}
+      className={`cursor-pointer w-[115px] h-[115px] -rotate-6 rounded-full flex items-center justify-center transition-all duration-300 border border-bronze text-smoke rift text-lg font-bold tracking-widest hover:bg-bronze hover:rotate-0 ${props.styles}`}
+    >
+      {props.title}
+    </a>
   );
 }

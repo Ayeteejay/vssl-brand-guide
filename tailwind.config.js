@@ -12,6 +12,7 @@ module.exports = {
         ink: "#000000",
         smoke: "#FFF",
         iron: "#222222",
+        faded_iron: "#707070",
       },
       gridTemplateAreas: {
         hero_large: [
@@ -26,7 +27,8 @@ module.exports = {
           ". . storm coin coin",
         ],
         voice: ["painting painting dog", "painting painting boat"],
-        grit: ["fish fish .", ". crust crust", "cliff cliff ."],
+        grit_large: ["fish fish .", ". crust crust", "cliff cliff ."],
+        grit_small: ["fish crust", "cliff crust"],
       },
     },
   },
