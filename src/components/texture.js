@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { SecondaryText } from "./utilities";
 export default function Texture() {
   const pageData = {

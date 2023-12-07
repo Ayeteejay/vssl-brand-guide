@@ -7,8 +7,8 @@ export default function Footer() {
       "Still have questions? Don't sweat it. Shoot us an email at design@vsslagency.com and we will help you out. Up Spirits!",
   };
   return (
-    <footer className="relative max-w-5xl mx-auto px-8 pb-20 sm:pb-40">
-      <div className="grid md:grid-cols-2">
+    <footer className="relative max-w-5xl mx-auto px-8 pb-20 sm:pb-40 overflow-hidden">
+      <div className="grid md:grid-cols-2 pb-52">
         <div>
           <MainText title={pageData.title} />
           <p className="relative text-smoke text-sm md:text-base elza mt-6">
@@ -21,7 +21,7 @@ export default function Footer() {
           width={2000}
           height={2000}
           priority={true}
-          className="translate-y-40"
+          className="w-[600px] absolute -bottom-20 -left-5 sm:bottom-auto sm:left-auto sm:top-52 sm:right-10"
         />
       </div>
     </footer>
