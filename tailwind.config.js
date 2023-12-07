@@ -10,9 +10,13 @@ module.exports = {
       colors: {
         bronze: "#9C794F",
         ink: "#000000",
-        smoke: "#FFF",
+        smoke: "#FFFFFF",
         iron: "#222222",
         faded_iron: "#707070",
+        barnacle_green: "#686A4E",
+        rusted_brown: "#6E4929",
+        faded_blue: "#49555D",
+        sand_beige: "#978B77",
       },
       gridTemplateAreas: {
         hero_large: [

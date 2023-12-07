@@ -5,12 +5,19 @@ import Image from "next/image";
 // Texturized Gin headers
 export function MainText(props) {
   return (
-    <h1 className="text-8xl relative gin-regular text-white">      
-        {props.title}
+    <h1 className="text-8xl relative gin-regular text-white">
+      {props.title}
       <span className="gin-lines text-bronze absolute top-[2px] left-[2px] opacity-40">
         {props.title}
       </span>
     </h1>
+  );
+}
+
+// H5
+export function H5(props) {
+  return (
+    <h5 className={`gin-regular text-2xl ${props.styles}`}>{props.title}</h5>
   );
 }
 

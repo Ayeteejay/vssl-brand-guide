@@ -7,6 +7,11 @@ import Boilerplate from "@/components/boilerplate";
 import Grit from "@/components/grit";
 import Logos from "@/components/logo";
 import Typography from "@/components/typography";
+import Colors from "@/components/colors";
+import Texture from "@/components/texture";
+import Illustration from "@/components/illustration";
+import Grid from "@/components/grid";
+import Rules from "@/components/rules";
 
 export default function Home() {
   return (
@@ -20,6 +25,11 @@ export default function Home() {
       <Grit />
       <Logos />
       <Typography />
+      <Colors />
+      <Texture />
+      <Illustration />
+      <Grid />
+      <Rules />
     </div>
   );
 }

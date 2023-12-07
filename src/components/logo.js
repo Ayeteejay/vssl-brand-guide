@@ -94,7 +94,7 @@ export default function Logos() {
     <section className="relative max-w-5xl mx-auto px-8 pb-20 sm:pb-28">
       <SecondaryText title={"Logo"} styles={"mb-12 sm:mb-14 md:mb-20"} />
       <div className="relative grid md:grid-cols-5 md:gap-20">
-        <div className="md:col-span-2">
+        <div className="md:col-span-2">          
           <h5 className="text-smoke gin-regular text-2xl transition-all duration-500 group-hover:text-bronze">
             {pageData.logo_types[0].title}
           </h5>

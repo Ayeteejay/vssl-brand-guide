@@ -1,4 +1,5 @@
 import Header from "@/components/header";
+import Footer from "@/components/footer";
 import ProgressBar from "@/components/progressBar";
 import Distressed from "@/components/distressed";
 import "./globals.css";
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
         <Distressed />
         <main>{children}</main>
         <ProgressBar />
+        <Footer />
       </body>
     </html>
   );
