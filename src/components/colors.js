@@ -1,4 +1,4 @@
-import { SecondaryText, H5, SmallHeader } from "./utilities";
+import { SecondaryHeader, TertiaryHeader, SmallHeader } from "./utilities";
 export default function Colors() {
   const pageData = {
     title: "Color",
@@ -76,9 +76,10 @@ export default function Colors() {
   };
   return (
     <section className="relative max-w-5xl mx-auto px-8 pb-20 sm:pb-28">
+      <div className="bg-ink bg-smoke bg-bronze bg-iron bg-barnacle_green bg-rusted_brown bg-faded_blue bg-sand_beige hidden"></div>
       <div className="grid md:grid-cols-2">
         <div>
-          <SecondaryText title={pageData.title} />
+          <SecondaryHeader title={pageData.title} />
           <p className="text-smoke text-sm md:text-base elza my-3">
             {pageData.content}
           </p>
@@ -91,9 +92,9 @@ export default function Colors() {
               key={color.id}
               className={`px-10 py-10 sm:py-16 bg-${color.title.toLowerCase()}`}
             >
-              <H5
+              <TertiaryHeader
                 title={color.title}
-                styles={`text-smoke mb-4 text-${color.title_color}`}
+                styles={`mb-4 text-${color.title_color}`}
               />
               <p
                 className={`rift font-bold leading-tight text-${color.code_color}`}
@@ -112,7 +113,10 @@ export default function Colors() {
       </div>
       <div className="grid md:grid-cols-2 md:gap-20">
         <div>
-          <H5 title={pageData.secondary_colors.title} styles={"text-smoke"} />
+          <TertiaryHeader
+            title={pageData.secondary_colors.title}
+            styles={"text-smoke"}
+          />
           <p className="text-smoke text-sm md:text-base elza my-3">
             {pageData.secondary_colors.content}
           </p>

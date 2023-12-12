@@ -1,4 +1,4 @@
-import { SecondaryText, BronzeButton } from "./utilities";
+import { SecondaryHeader, BronzeButton } from "./utilities";
 export default function Typography() {
   const pageData = {
     title: "Typography",
@@ -41,7 +41,7 @@ export default function Typography() {
   };
   return (
     <section className="relative max-w-5xl mx-auto px-8 pb-20 sm:pb-28">
-      <SecondaryText title={pageData.title} />
+      <SecondaryHeader title={pageData.title} />
       <p className="text-smoke text-sm md:text-base elza my-3">
         {pageData.content}
       </p>

@@ -1,10 +1,10 @@
-import { MainText, WilsonText } from "./utilities";
+import { PrimaryHeader, WilsonHeader } from "./utilities";
 import Image from "next/image";
 export default function Hero() {
   return (
     <section className="relative">
       <div className="relative z-10 max-w-xl mx-auto px-8 sm:px-0 pt-40">
-        <MainText title="Who the hell is VSSL?" />
+        <PrimaryHeader title="Who the hell is VSSL?" />
         <p className="elza text-white relative text-sm md:text-base pt-6">
           We&apos;re a crew of digital marketing creatives, builders, and
           strategists that know how to make brands stand out. We identify and
@@ -45,7 +45,7 @@ export default function Hero() {
             alt="VSSL Challenge coin"
             className="transition-all duration-300 opacity-50 lg:opacity-100 w-full h-auto"
           />
-          <WilsonText
+          <WilsonHeader
             title="We're not pirates but we're salty as shit"
             styles={"absolute -top-5 -left-20 hidden xl:block"}
           />

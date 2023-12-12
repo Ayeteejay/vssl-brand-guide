@@ -1,6 +1,12 @@
+"use client";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import { SecondaryText, ProfileCard } from "./utilities";
+import { SecondaryHeader, ProfileCard } from "./utilities";
 export default function Persona() {
+  const { scrollYProgress } = useScroll();
+  const captainTranslateY = useTransform(scrollYProgress, [0, 1], [0, -5000]);
+  const lydiaTranslateY = useTransform(scrollYProgress, [0, 1], [0, -4000]);
+
   const pageData = {
     title: "Persona",
     description: [
@@ -66,7 +72,7 @@ export default function Persona() {
       <div className="grid md:grid-cols-2 md:items-center">
         <div>
           <div className="z-10 relative">
-            <SecondaryText title={pageData.title} />
+            <SecondaryHeader title={pageData.title} />
             {pageData.description.map((item, index) => {
               return (
                 <p
@@ -88,22 +94,32 @@ export default function Persona() {
             alt="Shipwrecked crew"
           />
         </div>
-        <Image
-          className="hidden md:block relative ml-auto"
-          src="/images/persona/captain.png"
-          width={250}
-          height={250}
-          alt="The captain of the ship"
-        />
+
+        <motion.div
+          className="hidden md:block relative ml-auto top-96"
+          style={{ translateY: captainTranslateY }}
+        >
+          <Image
+            src="/images/persona/captain.png"
+            width={250}
+            height={250}
+            alt="The captain of the ship"
+          />
+        </motion.div>
       </div>
       <div className="grid md:grid-cols-5 mt-10 md:mt-20">
-        <Image
-          src="/images/persona/lydia.jpg"
-          height={250}
-          width={250}
-          alt="Lydia the tattooed lady"
-          className="absolute left-0 hidden md:block transition-all duration-300 hover:rotate-2"
-        />
+        <motion.div
+          className="absolute top-[1200px] left-0 hidden md:block hover:rotate-2"
+          style={{ translateY: lydiaTranslateY }}
+        >
+          <Image
+            src="/images/persona/lydia.jpg"
+            height={250}
+            width={250}
+            alt="Lydia the tattooed lady"
+            className=""
+          />
+        </motion.div>
         <div className="col-span-1"></div>
         <div className="flex col-span-4 md:pl-20 gap-10">
           {pageData.profiles.map((profile) => {

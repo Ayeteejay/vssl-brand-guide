@@ -3,7 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 
 // Texturized Gin headers
-export function MainText(props) {
+export function PrimaryHeader(props) {
   return (
     <h1 className="text-8xl relative gin-regular text-white">
       {props.title}
@@ -14,15 +14,26 @@ export function MainText(props) {
   );
 }
 
-// H5
-export function H5(props) {
+// Gin subheaders
+export function SecondaryHeader(props) {
+  return (
+    <h2
+      className={`text-smoke text-6xl font-medium gin-regular mb-4 ${props.styles}`}
+    >
+      {props.title}
+    </h2>
+  );
+}
+
+// TertiaryHeader
+export function TertiaryHeader(props) {
   return (
     <h5 className={`gin-regular text-2xl ${props.styles}`}>{props.title}</h5>
   );
 }
 
 // Ink colored Wilson text
-export function WilsonText(props) {
+export function WilsonHeader(props) {
   const halfLength = Math.floor(props.title.split(" ").length / 2);
   const sliceStr = (str, mode) => {
     const words = str.split(" ");
@@ -47,16 +58,7 @@ export function WilsonText(props) {
   );
 }
 
-// Gin subheaders
-export function SecondaryText(props) {
-  return (
-    <h2
-      className={`text-smoke text-6xl font-medium gin-regular mb-4 ${props.styles}`}
-    >
-      {props.title}
-    </h2>
-  );
-}
+
 
 // Gin callout cards
 export function GinCard(props) {

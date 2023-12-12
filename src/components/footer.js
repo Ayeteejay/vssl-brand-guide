@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { MainText } from "./utilities";
+import { PrimaryHeader } from "./utilities";
 export default function Footer() {
   const pageData = {
     title: "Questions?",
@@ -10,7 +10,7 @@ export default function Footer() {
     <footer className="relative max-w-5xl mx-auto px-8 pb-20 sm:pb-40 overflow-hidden">
       <div className="grid md:grid-cols-2 pb-52">
         <div>
-          <MainText title={pageData.title} />
+          <PrimaryHeader title={pageData.title} />
           <p className="relative text-smoke text-sm md:text-base elza mt-6">
             {pageData.content}
           </p>

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { SecondaryText, BronzeButton } from "./utilities";
+import { SecondaryHeader, BronzeButton } from "./utilities";
 export default function Illustration() {
   const pageData = {
     title: "Illustration",
@@ -35,7 +35,7 @@ export default function Illustration() {
     <section className="relative max-w-5xl mx-auto px-8 pb-20 sm:pb-28">
       <div className="grid md:grid-cols-2">
         <div>
-          <SecondaryText title={pageData.title} />
+          <SecondaryHeader title={pageData.title} />
           <p className="text-smoke text-sm md:text-base elza my-3">
             {pageData.content}
           </p>

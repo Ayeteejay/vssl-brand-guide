@@ -1,4 +1,4 @@
-import { SecondaryText } from "./utilities";
+import { SecondaryHeader } from "./utilities";
 export default function Boilerplate() {
   const pageData = {
     title: "Boilerplate",
@@ -19,7 +19,7 @@ export default function Boilerplate() {
   };
   return (
     <section className="max-w-5xl mx-auto px-8 relative mb-16 md:mb-32">
-      <SecondaryText title={pageData.title} styles={"mb-10"} />
+      <SecondaryHeader title={pageData.title} styles={"mb-10"} />
       <div className="grid md:grid-cols-2 gap-5 md:gap-14">
         {pageData.description.map((item) => {
           return (

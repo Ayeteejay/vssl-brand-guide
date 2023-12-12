@@ -1,4 +1,4 @@
-import { SecondaryText, ValueCard } from "./utilities";
+import { SecondaryHeader, ValueCard } from "./utilities";
 export default function Values() {
   const pageData = {
     title: "Our Values",
@@ -155,7 +155,7 @@ export default function Values() {
   };
   return (
     <section className="max-w-5xl mx-auto px-8 sm:px-[70px] relative">
-      <SecondaryText
+      <SecondaryHeader
         title={pageData.title}
         styles={"md:pl-[380px] pb-10 md:pb-4"}
       />

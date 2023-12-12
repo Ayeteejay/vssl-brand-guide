@@ -1,4 +1,4 @@
-import { SecondaryText } from "./utilities";
+import { SecondaryHeader } from "./utilities";
 export default function Texture() {
   const pageData = {
     title: "Texture",
@@ -27,7 +27,7 @@ export default function Texture() {
     <section className="relative max-w-5xl mx-auto px-8 pb-20 sm:pb-28">
       <div className="grid md:grid-cols-2">
         <div>
-          <SecondaryText title={pageData.title} />
+          <SecondaryHeader title={pageData.title} />
           <p className="relative text-smoke text-sm md:text-base elza mt-6">
             {pageData.content}
           </p>

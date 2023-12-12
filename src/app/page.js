@@ -12,6 +12,7 @@ import Texture from "@/components/texture";
 import Illustration from "@/components/illustration";
 import Grid from "@/components/grid";
 import Rules from "@/components/rules";
+import Photography from "@/components/photography";
 
 export default function Home() {
   return (
@@ -26,10 +27,11 @@ export default function Home() {
       <Logos />
       <Typography />
       <Colors />
+      <Photography />
       <Texture />
       <Illustration />
       <Grid />
-      <Rules />
+      <Rules />      
     </div>
   );
 }

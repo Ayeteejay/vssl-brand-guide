@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { SecondaryText, WilsonText, BronzeButton } from "./utilities";
+import { SecondaryHeader, WilsonHeader, BronzeButton } from "./utilities";
 export default function Logos() {
   const pageData = {
     title: "Logo",
@@ -92,7 +92,7 @@ export default function Logos() {
   };
   return (
     <section className="relative max-w-5xl mx-auto px-8 pb-20 sm:pb-28">
-      <SecondaryText title={"Logo"} styles={"mb-12 sm:mb-14 md:mb-20"} />
+      <SecondaryHeader title={"Logo"} styles={"mb-12 sm:mb-14 md:mb-20"} />
       <div className="relative grid md:grid-cols-5 md:gap-20">
         <div className="md:col-span-2">          
           <h5 className="text-smoke gin-regular text-2xl transition-all duration-500 group-hover:text-bronze">
@@ -102,7 +102,7 @@ export default function Logos() {
             {pageData.logo_types[0].content}
           </p>
         </div>
-        <WilsonText
+        <WilsonHeader
           title={"Scroll left and right ya' loser"}
           styles={"block sm:hidden absolute top-36 -left-5 sm:top-32 z-10"}
         />
@@ -132,7 +132,7 @@ export default function Logos() {
                 <p className="text-smoke text-sm md:text-base elza my-3">
                   {logo.content}
                 </p>
-                <WilsonText
+                <WilsonHeader
                   title={"Scroll left and right ya' loser"}
                   styles={"block sm:hidden absolute top-32 -left-5 z-10"}
                 />

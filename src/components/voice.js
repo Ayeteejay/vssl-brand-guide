@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { SecondaryText } from "./utilities";
+import { SecondaryHeader } from "./utilities";
 export default function Voice() {
   const pageData = {
     title: "Tone of Voice",
@@ -20,7 +20,7 @@ export default function Voice() {
         alt: "Docked boat with life vest and gear",
         width: 700,
         height: 700,
-        className: "absolute top-0 left-0",
+        className: "absolute top-5 md:top-20 -left-20",
       },
       {
         id: 2,
@@ -28,7 +28,7 @@ export default function Voice() {
         alt: "Painting of a sailor being held by a person",
         width: 300,
         height: 300,
-        className: "grid-in-painting relative",
+        className: "grid-in-painting relative -translate-y-5",
       },
       {
         id: 3,
@@ -52,10 +52,10 @@ export default function Voice() {
   return (
     <section className="bg-ink relative">
       <div className="max-w-5xl mx-auto px-8 py-16 my-16 md:py-32 md:my-32">
-        <SecondaryText title={pageData.title} />
+        <SecondaryHeader title={pageData.title} />
         <div className="grid md:grid-cols-2 md:gap-14">
           <div id="collage" className="order-2 md:order-1 mt-10">
-            <div className="grid grid-areas-voice relative pt-10 px-10 md:p-5">
+            <div className="grid grid-areas-voice relative pt-5 md:pt-10 px-10 md:p-5">
               {pageData.images.map((image) => {
                 return (
                   <Image
@@ -73,7 +73,7 @@ export default function Voice() {
               {pageData.tone}
             </p>
           </div>
-          <div id="description" className="order-1 md:order-2">
+          <div className="order-1 md:order-2">
             {pageData.description.map((item, index) => {
               return (
                 <p
