@@ -1,4 +1,5 @@
 "use client";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
 
@@ -58,8 +59,6 @@ export function WilsonHeader(props) {
   );
 }
 
-
-
 // Gin callout cards
 export function GinCard(props) {
   return (
@@ -101,13 +100,33 @@ export function ProfileCard(props) {
 export function ValueCard(props) {
   return (
     <div className="flex gap-10 md:gap-20 flex-col md:flex-row items-center">
-      <Image
-        src={props.image.src}
-        height={300}
-        width={300}
-        alt={props.image.alt}
-      />
-      <div>
+      <motion.div
+        initial={{
+          opacity: 0,
+          rotate: -20,
+          x: -200,
+          y: 200,
+          rotate: 45,
+          scale: 0.5,
+        }}
+        whileInView={{ opacity: 1, rotate: 0, x: 0, y: 0, rotate: 0, scale: 1 }}
+        viewport={{ once: false }}
+        transition={{ duration: 1, type: "spring", stiffness: 45 }}
+        className="min-w-[300px]"
+      >
+        <Image
+          src={props.image.src}
+          height={300}
+          width={300}
+          alt={props.image.alt}
+        />
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 200 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false }}
+        transition={{ duration: 0.6, type: "tween" }}
+      >
         <h5 className="text-smoke gin-regular text-2xl">{props.title}</h5>
         <p className="text-smoke text-sm md:text-base elza my-3">
           {props.description}
@@ -123,7 +142,7 @@ export function ValueCard(props) {
             })}
           </ul>
         )}
-      </div>
+      </motion.div>
     </div>
   );
 }

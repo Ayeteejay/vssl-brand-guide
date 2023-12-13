@@ -1,3 +1,4 @@
+"use client";
 import { SecondaryHeader, GinCard } from "./utilities";
 export default function Positioning() {
   const ginCardData = [

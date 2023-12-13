@@ -1,3 +1,4 @@
+"use client";
 import { SecondaryHeader, ValueCard } from "./utilities";
 export default function Values() {
   const pageData = {
