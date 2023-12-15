@@ -1,17 +1,33 @@
+"use client";
+import axios from "axios";
+import { useState, useEffect } from "react";
 import { PrimaryHeader, WilsonHeader } from "./utilities";
 import Image from "next/image";
+
 export default function Hero() {
+  const [componentData, setComponentData] = useState(null);
+
+  const PORT = process.env.NEXT_PUBLIC_PORT || "1337";
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:${PORT}/api/hero?populate=*`)
+      .then((response) => {
+        setComponentData(response.data);
+        // console.log(response.data);
+      });
+  }, [PORT]);
+
+  if (!componentData) {
+    return <></>;
+  }
+
   return (
     <section className="relative">
       <div className="relative z-10 max-w-xl mx-auto px-8 sm:px-0 pt-40">
-        <PrimaryHeader title="Who the hell is VSSL?" />
+        <PrimaryHeader title={componentData.data.attributes.Title} />
         <p className="elza text-white relative text-sm md:text-base pt-6">
-          We&apos;re a crew of digital marketing creatives, builders, and
-          strategists that know how to make brands stand out. We identify and
-          amplify what makes your brand unique in order to make waves and sink
-          the competition. This guide makes sure that the way we look and sound
-          feels consistent across all of our communications. Keep diving to
-          learn more about the VSSL brand.
+          {componentData.data.attributes.Description[0].children[0].text}
         </p>
       </div>
       <div className="w-full absolute top-0 left-0 z-0 grid grid-areas-hero_small sm:grid-areas-hero_large">
@@ -46,7 +62,7 @@ export default function Hero() {
             className="transition-all duration-300 opacity-50 lg:opacity-100 w-full h-auto"
           />
           <WilsonHeader
-            title="We're not pirates but we're salty as shit"
+            title={componentData.data.attributes.Salty}
             styles={"absolute -top-5 -left-20 hidden xl:block"}
           />
         </div>
