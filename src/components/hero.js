@@ -1,68 +1,60 @@
-"use client";
-import axios from "axios";
-import { useState, useEffect } from "react";
-import { PrimaryHeader, WilsonHeader } from "./utilities";
 import Image from "next/image";
+import { PrimaryHeader, WilsonHeader } from "./utilities";
 
-export default function Hero() {
-  const [componentData, setComponentData] = useState(null);
-
-  const PORT = process.env.NEXT_PUBLIC_PORT || "1337";
-
-  useEffect(() => {
-    axios
-      .get(`http://localhost:${PORT}/api/hero?populate=*`)
-      .then((response) => {
-        setComponentData(response.data);
-        // console.log(response.data);
-      });
-  }, [PORT]);
-
-  if (!componentData) {
-    return <></>;
+const PORT = process.env.NEXT_PUBLIC_PORT || "http://127.0.0.1:1337";
+const getData = async () => {
+  const res = await fetch(`${PORT}/api/hero?populate=*`, {
+    cache: "no-store",
+  });
+  if (!res.ok) {
+    throw new Error("Error on data fetching!");
   }
+  const jsonRes = await res.json();
+  return jsonRes.data.attributes;
+};
 
+export default async function Hero() {
+  const data = await getData();
   return (
     <section className="relative">
       <div className="relative z-10 max-w-xl mx-auto px-8 sm:px-0 pt-40">
-        <PrimaryHeader title={componentData.data.attributes.Title} />
+        <PrimaryHeader title={data.title} />
         <p className="elza text-white relative text-sm md:text-base pt-6">
-          {componentData.data.attributes.Description[0].children[0].text}
+          {data.description[0].children[0].text}
         </p>
       </div>
       <div className="w-full absolute top-0 left-0 z-0 grid grid-areas-hero_small sm:grid-areas-hero_large">
         <Image
-          src="/images/hero/pirates.png"
-          width={1500}
-          height={1500}
-          alt="Pirates hanging out on the deck"
+          src={`${PORT}${data.top_right_image.data.attributes.url}`}
+          alt={`${data.top_right_image.data.attributes.alternativeText}`}
           className="grid-in-pirates pl-52 opacity-75"
-          priority={true}
+          height={1500}
+          width={1500}
         />
         <Image
-          src="/images/hero/shaka.png"
-          width={350}
-          height={350}
-          alt="Hand throwing up a shaka in the water"
+          src={`${PORT}${data.bottom_left_image.data.attributes.url}`}
+          alt={`${data.bottom_left_image.data.attributes.alternativeText}`}
           className="grid-in-shaka"
+          height={350}
+          width={350}
         />
         <Image
-          src="/images/hero/storm.jpg"
-          width={500}
-          height={500}
-          alt="Person walking on the beach"
+          src={`${PORT}${data.bottom_middle_image.data.attributes.url}`}
+          alt={`${data.bottom_middle_image.data.attributes.alternativeText}`}
           className="grid-in-storm pl-32 transition-all duration-300 opacity-50 xl:opacity-100"
+          height={500}
+          width={500}
         />
         <div className="grid-in-coin relative pt-10">
           <Image
-            src="/images/hero/coin.jpg"
-            width={300}
-            height={300}
-            alt="VSSL Challenge coin"
+            src={`${PORT}${data.bottom_right_image.data.attributes.url}`}
+            alt={`${data.bottom_right_image.data.attributes.alternativeText}`}
             className="transition-all duration-300 opacity-50 lg:opacity-100 w-full h-auto"
+            height={500}
+            width={500}
           />
           <WilsonHeader
-            title={componentData.data.attributes.Salty}
+            title={data.salty}
             styles={"absolute -top-5 -left-20 hidden xl:block"}
           />
         </div>
