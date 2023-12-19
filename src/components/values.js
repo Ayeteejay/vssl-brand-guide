@@ -7,7 +7,7 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function Values() {
   const { data, error, isLoading } = useSWR(
-    `${PORT}/api/our-value?populate[0]=values&populate[1]=values.value_image&populate[2]=values.value_image.media`,
+    `${PORT}/api/our-value?populate[0]=values&populate[1]=values.image&populate[2]=values.image.media`,
     fetcher
   );
 
@@ -25,8 +25,8 @@ export default function Values() {
           return (
             <ValueCard
               key={index}
-              image={`${PORT}${value.value_image.data.attributes.url}`}
-              alt={value.value_image.data.attributes.alternativeText}
+              image={`${PORT}${value.image.data.attributes.url}`}
+              alt={value.image.data.attributes.alternativeText}
               title={value.title}
               description={value.description}
             />

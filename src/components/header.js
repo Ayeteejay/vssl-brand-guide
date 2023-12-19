@@ -1,7 +1,20 @@
 "use client";
+import useSWR from "swr";
 import { motion } from "framer-motion";
 import Image from "next/image";
+
+const PORT = process.env.NEXT_PUBLIC_PORT || "http://127.0.0.1:1337";
+const fetcher = (url) => fetch(url).then((res) => res.json());
+
 export default function Header() {
+  const { data, error, isLoading } = useSWR(
+    `${PORT}/api/navigation?populate=*`,
+    fetcher
+  );
+
+  if (error) return "An error has occurred.";
+  if (isLoading) return "Loading...";
+
   return (
     <nav className="px-10 lg:px-20 absolute top-0 left-0 z-10">
       <motion.div
@@ -15,8 +28,8 @@ export default function Header() {
         className="min-w-[300px]"
       >
         <Image
-          src="/images/vssl-logo.svg"
-          alt="VSSL logo"
+          src={`${PORT}${data.data.attributes.image.data.attributes.url}`}
+          alt={`${data.data.attributes.image.data.attributes.alternativeText}`}
           width={500}
           height={500}
           priority={true}

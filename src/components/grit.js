@@ -36,7 +36,7 @@ export default async function Grit() {
         </div>
         <div className="md:col-span-1"></div>
       </div>
-      <div className="mt-10 sm:mt-20 lg:mt-0 lg:absolute -bottom-64 right-0 transition-all duration-500 grid grid-areas-grit_small lg:grid-areas-grit_large">
+      <div className="mt-10 sm:mt-20 lg:mt-0 lg:absolute -bottom-64 right-0 transition-all duration-500 grid grid-areas-grit_small lg:grid-areas-grit_large overflow-x-hidden">
         <WilsonHeader
           title={data.salty}
           styles={

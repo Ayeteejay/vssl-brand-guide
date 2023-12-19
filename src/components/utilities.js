@@ -166,10 +166,10 @@ export function LogoSection(props) {
           return (
             <Image
               key={logo.id}
-              src={`${props.port}${logo.logo_image.data.attributes.url}`}
+              src={`${props.port}${logo.image.data.attributes.url}`}
               height={2000}
               width={2000}
-              alt={logo.logo_image.data.attributes.alternativeText}
+              alt={logo.image.data.attributes.alternativeText}
               className={`mt-5 p-10 bg-${logo.background_color}`}
             />
           );

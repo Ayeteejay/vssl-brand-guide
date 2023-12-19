@@ -9,7 +9,7 @@ import {
 const PORT = process.env.NEXT_PUBLIC_PORT || "http://127.0.0.1:1337";
 const getData = async () => {
   const res = await fetch(
-    `${PORT}/api/logo?populate[0]=primary_logos&populate[1]=primary_logos.logo_image&populate[2]=primary_logos.logo_image.media&populate[3]=simplified_logos&populate[4]=simplified_logos.logo_image&populate[5]=simplified_logos.logo_image.media&populate[6]=flag_logos&populate[7]=flag_logos.logo_image&populate[8]=flag_logos.logo_image.media&populate[9]=download`,
+    `${PORT}/api/logo?populate[0]=primary_logos&populate[1]=primary_logos.image&populate[2]=primary_logos.image.media&populate[3]=simplified_logos&populate[4]=simplified_logos.image&populate[5]=simplified_logos.image.media&populate[6]=flag_logos&populate[7]=flag_logos.image&populate[8]=flag_logos.image.media&populate[9]=download`,
     {
       cache: "no-store",
     }
@@ -51,10 +51,10 @@ export default async function Logos() {
             return (
               <Image
                 key={logo.id}
-                src={`${PORT}${logo.logo_image.data.attributes.url}`}
+                src={`${PORT}${logo.image.data.attributes.url}`}
                 height={2000}
                 width={2000}
-                alt={logo.logo_image.data.attributes.alternativeText}
+                alt={logo.image.data.attributes.alternativeText}
                 className={`py-12 px-16 bg-${logo.background_color}`}
               />
             );

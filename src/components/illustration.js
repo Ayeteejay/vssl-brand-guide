@@ -4,7 +4,7 @@ import { SecondaryHeader, BronzeButton } from "./utilities";
 const PORT = process.env.NEXT_PUBLIC_PORT || "http://127.0.0.1:1337";
 const getData = async () => {
   const res = await fetch(
-    `${PORT}/api/illustration?populate[0]=illustration_images&populate[1]=illustration_images.image&populate[2]=illustration_images.image.media&populate[3]=download`,
+    `${PORT}/api/illustration?populate[0]=illustration_images&populate[1]=illustrations.image&populate[2]=illustrations.image.media&populate[3]=download`,
     {
       cache: "no-store",
     }
@@ -40,7 +40,16 @@ export default async function Illustration() {
           />
         </div>
         <div className="relative mt-5 md:mt-0">
-          {data.illustration_images.map((illustration) => {
+          {data.illustrations.map((illustration) => {
+            let className = null;
+            const label = illustration.label.toLowerCase();
+            if (label === "lighthouse") {
+              className = "absolute left-0";
+            } else if (label === "octopus") {
+              className = "absolute top-20 right-0 z-10";
+            } else if (label === "mermaid") {
+              className = "absolute top-72 right-32";
+            }
             return (
               <Image
                 key={illustration.id}
@@ -48,7 +57,7 @@ export default async function Illustration() {
                 alt={illustration.image.data.attributes.alternativeText}
                 width={illustration.width}
                 height={illustration.height}
-                className={illustration.class_name}
+                className={className}
               />
             );
           })}

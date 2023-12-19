@@ -1,53 +1,52 @@
 import Image from "next/image";
 import { SecondaryHeader } from "./utilities";
-export default function Rules() {
-  const pageData = {
-    title: "What not to do",
-    content: "Sure, rules are meant to be broken. But don't break these.",
-    images: [
-      {
-        id: 1,
-        src: "/images/rules/staged.jpg",
-        alt: "Staged and pristine objects",
-        title: "Don't choose images that are too pretty, pristine, or staged.",
-      },
-      {
-        id: 2,
-        src: "/images/rules/layouts.jpg",
-        alt: "Examples of bad layouts",
-        title: "Make sure layouts have strong layout and contrast of scale.",
-      },
-      {
-        id: 3,
-        src: "/images/rules/colors.jpg",
-        alt: "Examples of poor color usage",
-        title: "Don't get crazy with color.",
-      },
-      {
-        id: 4,
-        src: "/images/rules/illustrations.jpg",
-        alt: "Examples of over usage of illustrations",
-        title: "Don't incorporate too many illustrative or silly elements.",
-      },
-    ],
-  };
+
+const PORT = process.env.NEXT_PUBLIC_PORT || "http://127.0.0.1:1337";
+const getData = async () => {
+  const res = await fetch(
+    `${PORT}/api/rule?populate[0]=rules&populate[1]=rules.image&populate[2]=rules.image.media`,
+    {
+      cache: "no-store",
+    }
+  );
+  if (!res.ok) {
+    throw new Error("Error on data fetching!");
+  }
+  const jsonRes = await res.json();
+  return jsonRes.data.attributes;
+};
+
+export default async function Rules() {
+  const data = await getData();
   return (
     <section className="relative max-w-5xl mx-auto px-8 pb-20 sm:pb-28">
       <div className="grid md:grid-cols-2">
         <div>
-          <SecondaryHeader title={pageData.title} />
-          <p className="text-smoke text-sm md:text-base elza my-3">
-            {pageData.content}
-          </p>
+          <SecondaryHeader title={data.title} />
+          {data.description.map((item, index) => {
+            return (
+              <p
+                key={index}
+                className="text-smoke text-sm md:text-base elza my-3"
+              >
+                {item.children[0].text}
+              </p>
+            );
+          })}
         </div>
       </div>
       <div className="grid sm:grid-cols-2 sm:gap-7 my-14 md:my-20">
-        {pageData.images.map((image) => {
+        {data.rules.map((rule) => {
           return (
-            <div key={image.id} className="">
-              <Image src={image.src} alt={image.alt} height={500} width={500} />
+            <div key={rule.id} className="">
+              <Image
+                src={`${PORT}${rule.image.data.attributes.url}`}
+                alt={rule.image.data.attributes.alternativeText}
+                height={500}
+                width={500}
+              />
               <p className="text-smoke text-sm md:text-base elza mt-4 mb-12 sm:mb-5 text-center">
-                {image.title}
+                {rule.description}
               </p>
             </div>
           );
