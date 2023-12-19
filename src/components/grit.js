@@ -15,18 +15,17 @@ const getData = async () => {
 
 export default async function Grit() {
   const data = await getData();
-  // link: "https://youtu.be/V6CLumsir34?si=c3_wVKEh3CPFwsA2",
   return (
     <section className="relative pb-40 sm:pb-20 sm:mb-20 lg:mt-72 lg:mb-64">
-      <div className="relative z-10 grid md:grid-cols-5 md:gap-20 max-w-5xl mx-auto px-8">
+      <div className="relative z-20 grid md:grid-cols-5 md:gap-20 max-w-5xl mx-auto px-8">
         <div className="flex items-center md:col-span-4">
-          <div className="">
+          <div>
             <PrimaryHeader title={data.title} />
             {data.description.map((item, index) => {
               return (
                 <p
                   key={index}
-                  className="text-smoke text-sm md:text-base elza mt-6 mb-4"
+                  className="text-smoke text-sm md:text-base elza mt-6 mb-4 lg:w-[500px]"
                 >
                   {item.children[0].text}
                 </p>
@@ -36,20 +35,26 @@ export default async function Grit() {
         </div>
         <div className="md:col-span-1"></div>
       </div>
-      <div className="mt-10 sm:mt-20 lg:mt-0 lg:absolute -bottom-64 right-0 transition-all duration-500 grid grid-areas-grit_small lg:grid-areas-grit_large overflow-x-hidden">
+      <div className="mt-10 sm:mt-20 lg:mt-0 lg:absolute -bottom-64 right-0 transition-all duration-500 grid grid-areas-grit_small lg:grid-areas-grit_large">
         <WilsonHeader
           title={data.salty}
           styles={
-            "transition-all duration-500 absolute sm:top-[500px] lg:top-[600px] left-52 z-10"
+            "transition-all duration-500 absolute sm:top-[500px] lg:top-[600px] left-52 lg:left-10 z-20"
           }
         />
-        <Image
-          src={`${PORT}${data.fish_image.data.attributes.url}`}
-          alt={`${data.fish_image.data.attributes.alternativeText}`}
-          width={500}
-          height={500}
-          className="grid-in-fish translate-y-0 sm:w-72 md:w-96 transition-all duration-500 hover:-rotate-3"
-        />
+        <a
+          href="https://youtu.be/V6CLumsir34?si=c3_wVKEh3CPFwsA2"
+          target="_blank"
+          className="grid-in-fish z-10 cursor-default md:cursor-pointer"
+        >
+          <Image
+            src={`${PORT}${data.fish_image.data.attributes.url}`}
+            alt={`${data.fish_image.data.attributes.alternativeText}`}
+            width={500}
+            height={500}
+            className="translate-y-0 xl:translate-y-10 xl:z-10 sm:w-72 md:w-96 xl:w-[450px] lg:-translate-x-10 transition-all duration-500 md:hover:-rotate-3"
+          />
+        </a>
         <Image
           src={`${PORT}${data.fisherman_image.data.attributes.url}`}
           alt={`${data.fisherman_image.data.attributes.alternativeText}`}

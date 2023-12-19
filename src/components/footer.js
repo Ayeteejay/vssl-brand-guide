@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Markdown from "react-markdown";
 import { PrimaryHeader } from "./utilities";
 
 const PORT = process.env.NEXT_PUBLIC_PORT || "http://127.0.0.1:1337";
@@ -22,14 +23,14 @@ export default async function Footer() {
           <PrimaryHeader title={data.title} />
           {data.description.map((item, index) => {
             return (
-              <p
+              <Markdown
                 key={index}
-                className={`text-smoke text-sm md:text-base elza ${
+                className={`markdown text-smoke text-sm md:text-base elza ${
                   index === 0 ? "mt-6" : "my-3"
                 }`}
               >
                 {item.children[0].text}
-              </p>
+              </Markdown>
             );
           })}
         </div>

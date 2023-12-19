@@ -144,3 +144,11 @@
 .elza {
   font-family: "Elza-text", sans-serif;
 }
+
+.markdown a {
+  transition: all 300ms;
+  color: #9c794f;
+}
+.markdown a:hover {
+  color: #707070;
+}
