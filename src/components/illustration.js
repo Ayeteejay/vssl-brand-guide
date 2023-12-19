@@ -1,60 +1,54 @@
 import Image from "next/image";
 import { SecondaryHeader, BronzeButton } from "./utilities";
-export default function Illustration() {
-  const pageData = {
-    title: "Illustration",
-    content:
-      "VSSL doesn't use icons. Ideally, concepts can be conveyed using beautiful typography and photography. If a smaller visual is needed to communicate an idea, use a sticker. Our stickers are smaller illustrations of nautical stuff that can represent larger concepts. We have several but custom ones can be created too.",
-    images: [
-      {
-        id: 1,
-        src: "/images/illustration/lighthouse.png",
-        alt: "Lighthouse sticker",
-        class_name: "absolute left-0",
-      },
-      {
-        id: 2,
-        src: "/images/illustration/octopus.png",
-        alt: "Octopus sticker",
-        class_name: "absolute top-20 right-0 z-10",
-      },
-      {
-        id: 3,
-        src: "/images/illustration/mermaid.png",
-        alt: "Mermaid sticker",
-        class_name: "absolute top-72 right-32",
-      },
-    ],
-    download: {
-      title: "Download",
-      src: "#",
-      styles: "mt-10 sm:mt-20",
-    },
-  };
+
+const PORT = process.env.NEXT_PUBLIC_PORT || "http://127.0.0.1:1337";
+const getData = async () => {
+  const res = await fetch(
+    `${PORT}/api/illustration?populate[0]=illustration_images&populate[1]=illustration_images.image&populate[2]=illustration_images.image.media&populate[3]=download`,
+    {
+      cache: "no-store",
+    }
+  );
+  if (!res.ok) {
+    throw new Error("Error on data fetching!");
+  }
+  const jsonRes = await res.json();
+  return jsonRes.data.attributes;
+};
+
+export default async function Illustration() {
+  const data = await getData();
   return (
     <section className="relative max-w-5xl mx-auto px-8 pb-20 sm:pb-28">
       <div className="grid md:grid-cols-2">
         <div>
-          <SecondaryHeader title={pageData.title} />
-          <p className="text-smoke text-sm md:text-base elza my-3">
-            {pageData.content}
-          </p>
+          <SecondaryHeader title={data.title} />
+          {data.description.map((item, index) => {
+            return (
+              <p
+                key={index}
+                className="text-smoke text-sm md:text-base elza my-3"
+              >
+                {item.children[0].text}
+              </p>
+            );
+          })}
           <BronzeButton
-            title={pageData.download.title}
-            link={pageData.download.src}
-            styles={pageData.download.styles}
+            title={"Download"}
+            link={`${PORT}${data.download.data.attributes.url}`}
+            styles={"mt-10 sm:mt-20"}
           />
         </div>
         <div className="relative mt-5 md:mt-0">
-          {pageData.images.map((image) => {
+          {data.illustration_images.map((illustration) => {
             return (
               <Image
-                key={image.id}
-                src={image.src}
-                height={300}
-                width={300}
-                alt={image.alt}
-                className={image.class_name}
+                key={illustration.id}
+                src={`${PORT}${illustration.image.data.attributes.url}`}
+                alt={illustration.image.data.attributes.alternativeText}
+                width={illustration.width}
+                height={illustration.height}
+                className={illustration.class_name}
               />
             );
           })}

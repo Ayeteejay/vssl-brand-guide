@@ -1,97 +1,50 @@
 "use client";
+import useSWR from "swr";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import { SecondaryHeader, ProfileCard } from "./utilities";
+import { SecondaryHeader, PersonaCard } from "./utilities";
+
+const PORT = process.env.NEXT_PUBLIC_PORT || "http://127.0.0.1:1337";
+const fetcher = (url) => fetch(url).then((res) => res.json());
+
 export default function Persona() {
   const { scrollYProgress } = useScroll();
   const captainTranslateY = useTransform(scrollYProgress, [0, 1], [0, -5000]);
   const lydiaTranslateY = useTransform(scrollYProgress, [0, 1], [0, -4000]);
 
-  const pageData = {
-    title: "Persona",
-    description: [
-      {
-        id: 1,
-        text: "We are a small, scrappy group of marketers passionate about creating killer work. We are located right on the water and influenced by the sailors and fishermen on the docks and in our building. We were founded with the intention to bring passion to our work and not just follow in the footsteps of other agencies. We never settle for the obvious solution and are always looking for ways to do unexpected things for our clients. We are who we are, and we don&rsquo;t want to fit into the box of a creative agency.",
-      },
-      {
-        id: 2,
-        text: "VSSL is two archetypes: The Outlaw and The Creator. That influences everything in our brand: our positioning, brand voice, visual identity, and culture. It gives us a very different brand voice that reflects our disruptive spirit, allows us to operate differently than other agencies, and gives us the opportunity to be super creative with our design. We are not just another agency, nor do we want to be.",
-      },
-    ],
-    profiles: [
-      {
-        id: 1,
-        title: "The Outlaw",
-        description:
-          "The Outlaw disrupts, challenges the status quo, paves their own path, and bucks trends. They can be divisive and aren't for everyone — people either love them or hate them. They have a set of unwavering beliefs and aren't known to follow the rules",
-        bullets: [
-          {
-            id: 1,
-            description:
-              "At their best, they are independent, strong, and disruptive.",
-          },
-          {
-            id: 2,
-            description:
-              "At their worst, they are stubborn, offputting, and arrogant.",
-          },
-          {
-            id: 3,
-            description: "Core Belief: Rules are meant to be broken.",
-          },
-        ],
-      },
-      {
-        id: 2,
-        title: "The Creator",
-        description:
-          "The Creator is excited to explore ideas and create things with lasting value, embracing the creative process just as much as the end result. They are original, self-expressive, and passionate. They tend to make products or provide services that enable other creators.",
-        bullets: [
-          {
-            id: 1,
-            description:
-              "At their best, they are provocative, imaginative, and trendsetters.",
-          },
-          {
-            id: 2,
-            description:
-              "At their worst, they are directionless, egotistical, and obsessive.",
-          },
-          {
-            id: 3,
-            description:
-              "Core belief: If it can be imagined, it can be created.",
-          },
-        ],
-      },
-    ],
-  };
+  const { data, error, isLoading } = useSWR(
+    `${PORT}/api/persona?populate=*`,
+    fetcher
+  );
+
+  if (error) return "An error has occurred.";
+  if (isLoading) return "Loading...";
+
   return (
     <section className="max-w-5xl mx-auto px-8 sm:px-[70px] md:px-28 relative py-10 sm:py-16">
       <div className="grid md:grid-cols-2 md:items-center">
         <div>
           <div className="z-10 relative">
-            <SecondaryHeader title={pageData.title} />
-            {pageData.description.map((item, index) => {
+            <SecondaryHeader title={`${data.data.attributes.title}`} />
+            {data.data.attributes.description.map((item, index) => {
               return (
                 <p
                   className={`text-smoke elza text-sm md:text-base ${
                     index === 0 ? "mb-4" : ""
                   }`}
-                  key={item.id}
+                  key={index}
                 >
-                  {item.text}
+                  {item.children[0].text}
                 </p>
               );
             })}
           </div>
           <Image
             className="absolute -top-32 right-0 z-0 transition-all duration-300 opacity-40 md:opacity-100"
-            src="/images/persona/shipwrecked.png"
+            src={`${PORT}${data.data.attributes.shipwreck_image.data.attributes.url}`}
+            alt={`${data.data.attributes.shipwreck_image.data.attributes.alternativeText}`}
             width={500}
             height={500}
-            alt="Shipwrecked crew"
           />
         </div>
 
@@ -100,10 +53,10 @@ export default function Persona() {
           style={{ translateY: captainTranslateY }}
         >
           <Image
-            src="/images/persona/captain.png"
+            src={`${PORT}${data.data.attributes.captain_image.data.attributes.url}`}
+            alt={`${data.data.attributes.captain_image.data.attributes.alternativeText}`}
             width={250}
             height={250}
-            alt="The captain of the ship"
           />
         </motion.div>
       </div>
@@ -113,22 +66,20 @@ export default function Persona() {
           style={{ translateY: lydiaTranslateY }}
         >
           <Image
-            src="/images/persona/lydia.jpg"
+            src={`${PORT}${data.data.attributes.tattooed_image.data.attributes.url}`}
+            alt={`${data.data.attributes.tattooed_image.data.attributes.alternativeText}`}
             height={250}
             width={250}
-            alt="Lydia the tattooed lady"
-            className=""
           />
         </motion.div>
         <div className="col-span-1"></div>
         <div className="flex col-span-4 md:pl-20 gap-10">
-          {pageData.profiles.map((profile) => {
+          {data.data.attributes.personas.map((persona, index) => {
             return (
-              <ProfileCard
-                key={profile.id}
-                title={profile.title}
-                description={profile.description}
-                bullets={profile.bullets}
+              <PersonaCard
+                key={index}
+                title={persona.title}
+                description={persona.description}
               />
             );
           })}

@@ -1,35 +1,40 @@
 import { SecondaryHeader } from "./utilities";
-export default function Boilerplate() {
-  const pageData = {
-    title: "Boilerplate",
-    description: [
-      {
-        id: 1,
-        title: "About VSSL (short)",
-        content:
-          "VSSL Agency is a full-service creative digital marketing agency located in San Diego. VSSL builds brands, invents campaigns, and creates websites for growth-oriented B2B businesses who are ready to expand their digital future.",
-      },
-      {
-        id: 2,
-        title: "About VSSL (long)",
-        content:
-          "VSSL Agency is a full-service creative digital marketing agency located in San Diego. VSSL builds brands, invents campaigns, and creates websites for growth-oriented B2B businesses who are ready to expand their digital future. With our brand-first approach, companies can stand out in their market, attract the right customers, gain maximum value, and deliver bold digital marketing experiences that will drive sustained growth for long-term success.",
-      },
-    ],
-  };
+
+const PORT = process.env.NEXT_PUBLIC_PORT || "http://127.0.0.1:1337";
+const getData = async () => {
+  const res = await fetch(`${PORT}/api/boilerplate?populate=*`, {
+    cache: "no-store",
+  });
+  if (!res.ok) {
+    throw new Error("Error on data fetching!");
+  }
+  const jsonRes = await res.json();
+  return jsonRes.data.attributes;
+};
+
+export default async function Boilerplate() {
+  const data = await getData();
+
   return (
     <section className="max-w-5xl mx-auto px-8 relative mb-16 md:mb-32">
-      <SecondaryHeader title={pageData.title} styles={"mb-10"} />
+      <SecondaryHeader title={data.title} styles={"mb-10"} />
       <div className="grid md:grid-cols-2 gap-5 md:gap-14">
-        {pageData.description.map((item) => {
+        {data.about.map((item, index) => {
           return (
-            <div key={item.id} className="group">
+            <div key={index} className="group">
               <h5 className="text-smoke gin-regular text-2xl transition-all duration-500 group-hover:text-bronze">
                 {item.title}
               </h5>
-              <p className="text-smoke text-sm md:text-base elza my-3 transition-all duration-500 group-hover:text-bronze">
-                {item.content}
-              </p>
+              {item.description.map((subitem, index) => {
+                return (
+                  <p
+                    key={index}
+                    className="text-smoke text-sm md:text-base elza mt-3 transition-all duration-500 group-hover:text-bronze"
+                  >
+                    {subitem.children[0].text}
+                  </p>
+                );
+              })}
             </div>
           );
         })}

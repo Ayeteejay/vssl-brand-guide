@@ -74,24 +74,17 @@ export function GinCard(props) {
 }
 
 // Profile cards
-export function ProfileCard(props) {
+export function PersonaCard(props) {
   return (
     <div>
       <h5 className="text-bronze gin-regular text-2xl">{props.title}</h5>
-      <p className="text-smoke text-sm md:text-base elza my-3">
-        {props.description}
-      </p>
-      {props.bullets && (
-        <ul className="text-smoke text-sm md:text-base">
-          {props.bullets.map((bullet) => {
-            return (
-              <li key={bullet.id} className="mb-3">
-                {bullet.description}
-              </li>
-            );
-          })}
-        </ul>
-      )}
+      {props.description.map((persona, index) => {
+        return (
+          <p key={index} className="text-smoke text-sm md:text-base my-3">
+            {persona.children[0].text}
+          </p>
+        );
+      })}
     </div>
   );
 }
@@ -114,12 +107,7 @@ export function ValueCard(props) {
         transition={{ duration: 1, type: "spring", stiffness: 45 }}
         className="min-w-[300px]"
       >
-        <Image
-          src={props.image.src}
-          height={300}
-          width={300}
-          alt={props.image.alt}
-        />
+        <Image src={props.image} height={300} width={300} alt={props.alt} />
       </motion.div>
       <motion.div
         initial={{ opacity: 0, y: 200 }}
@@ -128,20 +116,16 @@ export function ValueCard(props) {
         transition={{ duration: 0.6, type: "tween" }}
       >
         <h5 className="text-smoke gin-regular text-2xl">{props.title}</h5>
-        <p className="text-smoke text-sm md:text-base elza my-3">
-          {props.description}
-        </p>
-        {props.bullets && (
-          <ul className="text-smoke text-sm md:text-base elza">
-            {props.bullets.map((bullet) => {
-              return (
-                <li key={bullet.id} className="mb-3">
-                  {bullet.description}
-                </li>
-              );
-            })}
-          </ul>
-        )}
+        {props.description.map((value, index) => {
+          return (
+            <p
+              key={index}
+              className="text-smoke text-sm md:text-base elza my-3"
+            >
+              {value.children[0].text}
+            </p>
+          );
+        })}
       </motion.div>
     </div>
   );
@@ -156,5 +140,51 @@ export function BronzeButton(props) {
     >
       {props.title}
     </a>
+  );
+}
+
+// Logo section
+export function LogoSection(props) {
+  return (
+    <div className="relative">
+      <h5 className="text-smoke gin-regular text-2xl transition-all duration-500 group-hover:text-bronze">
+        {props.title}
+      </h5>
+      {props.description.map((item, index) => {
+        return (
+          <p key={index} className="text-smoke text-sm md:text-base elza my-3">
+            {item.children[0].text}
+          </p>
+        );
+      })}
+      <WilsonHeader
+        title={props.salty}
+        styles={"block sm:hidden absolute top-36 -left-5 sm:top-32 z-10"}
+      />
+      <div className="flex overflow-scroll sm:grid sm:grid-cols-3 mb-6 md:mb-0">
+        {props.logos.map((logo) => {
+          return (
+            <Image
+              key={logo.id}
+              src={`${props.port}${logo.logo_image.data.attributes.url}`}
+              height={2000}
+              width={2000}
+              alt={logo.logo_image.data.attributes.alternativeText}
+              className={`mt-5 p-10 bg-${logo.background_color}`}
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+// Font section
+export function FontSection(props) {
+  return (
+    <div className="px-5 py-8 md:py-10 md:px-14">
+      <p className={`break-all ${props.styles}`}>{props.description}</p>
+      <p className="text-faded_iron rift font-bold mt-5">{props.title}</p>
+    </div>
   );
 }
