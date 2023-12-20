@@ -26,18 +26,25 @@ export default function Persona() {
         <div>
           <div className="z-10 relative">
             <SecondaryHeader title={`${data.data.attributes.title}`} />
-            {data.data.attributes.description.map((item, index) => {
-              return (
-                <p
-                  className={`text-smoke elza text-sm md:text-base ${
-                    index === 0 ? "mb-4" : ""
-                  }`}
-                  key={index}
-                >
-                  {item.children[0].text}
-                </p>
-              );
-            })}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: false }}
+              transition={{ duration: 1, type: "tween" }}
+            >
+              {data.data.attributes.description.map((item, index) => {
+                return (
+                  <p
+                    className={`text-smoke elza text-sm md:text-base ${
+                      index === 0 ? "mb-4" : ""
+                    }`}
+                    key={index}
+                  >
+                    {item.children[0].text}
+                  </p>
+                );
+              })}
+            </motion.div>
           </div>
           <Image
             className="absolute -top-32 right-0 z-0 transition-all duration-300 opacity-40 md:opacity-100"
