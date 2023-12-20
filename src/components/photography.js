@@ -52,7 +52,7 @@ export default async function Photography() {
           } else if (label === "surfboards") {
             className = "grid-in-surfboards z-30 translate-y-32";
           } else if (label === "dog") {
-            className = "grid-in-dog z-30";
+            className = "grid-in-dog z-30 w-auto";
           } else if (label === "captain") {
             className = "grid-in-captain z-20 absolute -bottom-32";
           } else if (label === "vehicle") {

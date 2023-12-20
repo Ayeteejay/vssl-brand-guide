@@ -52,7 +52,7 @@ export default async function Grit() {
             alt={`${data.fish_image.data.attributes.alternativeText}`}
             width={500}
             height={500}
-            className="translate-y-0 xl:translate-y-10 xl:z-10 sm:w-72 md:w-96 xl:w-[450px] lg:-translate-x-10 transition-all duration-500 md:hover:-rotate-3"
+            className="translate-y-0 xl:translate-y-10 xl:z-10 sm:w-72 md:w-96 xl:w-[450px] lg:-translate-x-10 transition-all duration-500 md:hover:-rotate-3 h-auto w-auto"
           />
         </a>
         <Image
@@ -60,14 +60,14 @@ export default async function Grit() {
           alt={`${data.fisherman_image.data.attributes.alternativeText}`}
           width={300}
           height={300}
-          className="grid-in-crust transition-all duration-500 translate-y-20 lg:translate-y-0"
+          className="grid-in-crust transition-all duration-500 translate-y-20 lg:translate-y-0 h-auto w-auto"
         />
         <Image
           src={`${PORT}${data.cliff_image.data.attributes.url}`}
           alt={`${data.cliff_image.data.attributes.alternativeText}`}
           width={300}
           height={300}
-          className="grid-in-cliff transition-all duration-500 w-40 sm:w-32 md:w-72 -translate-x-10 translate-y-10 md:-translate-x-5 lg:-translate-x-10 md:translate-y-10 lg:-translate-y-20"
+          className="grid-in-cliff transition-all duration-500 w-40 sm:w-32 md:w-72 -translate-x-10 translate-y-10 md:-translate-x-5 lg:-translate-x-10 md:translate-y-10 lg:-translate-y-20 h-auto w-auto"
         />
       </div>
     </section>

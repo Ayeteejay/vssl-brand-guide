@@ -44,11 +44,11 @@ export default async function Illustration() {
             let className = null;
             const label = illustration.label.toLowerCase();
             if (label === "lighthouse") {
-              className = "absolute left-0";
+              className = "absolute left-0 ";
             } else if (label === "octopus") {
-              className = "absolute top-20 right-0 z-10";
+              className = "absolute top-20 right-0 z-10 ";
             } else if (label === "mermaid") {
-              className = "absolute top-72 right-32";
+              className = "absolute top-72 right-32 ";
             }
             return (
               <Image

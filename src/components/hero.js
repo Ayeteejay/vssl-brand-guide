@@ -30,11 +30,12 @@ export default async function Hero() {
           className="grid-in-pirates transition-all duration-500 pl-52 opacity-75 xl:pl-0 xl:w-[750px] xl:translate-x-20 xl:-translate-y-10"
           height={1000}
           width={1000}
+          priority={true}
         />
         <Image
           src={`${PORT}${data.bottom_left_image.data.attributes.url}`}
           alt={`${data.bottom_left_image.data.attributes.alternativeText}`}
-          className="grid-in-shaka transition-all duration-500 -translate-y-32 lg:-translate-y-52 xl:translate-x-32"
+          className="grid-in-shaka transition-all duration-500 -translate-y-32 lg:-translate-y-52 xl:translate-x-32 h-auto w-auto"
           height={350}
           width={350}
         />

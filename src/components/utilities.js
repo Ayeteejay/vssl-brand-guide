@@ -105,9 +105,9 @@ export function ValueCard(props) {
         whileInView={{ opacity: 1, rotate: 0, x: 0, y: 0, rotate: 0, scale: 1 }}
         viewport={{ once: false }}
         transition={{ duration: 1, type: "spring", stiffness: 45 }}
-        className="min-w-[300px]"
+        className="min-w-[300px] w-auto h-52 md:h-72 relative"
       >
-        <Image src={props.image} height={300} width={300} alt={props.alt} />
+        <Image src={props.image} fill={true} alt={props.alt} />
       </motion.div>
       <motion.div
         initial={{ opacity: 0, y: 200 }}

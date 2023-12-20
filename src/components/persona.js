@@ -47,11 +47,12 @@ export default function Persona() {
             </motion.div>
           </div>
           <Image
-            className="absolute -top-32 right-0 z-0 transition-all duration-300 opacity-40 md:opacity-100"
+            className="absolute -top-32 right-0 z-0 transition-all duration-300 opacity-40 md:opacity-100 h-auto w-auto"
             src={`${PORT}${data.data.attributes.shipwreck_image.data.attributes.url}`}
             alt={`${data.data.attributes.shipwreck_image.data.attributes.alternativeText}`}
             width={500}
             height={500}
+            priority={true}
           />
         </div>
 
@@ -64,6 +65,7 @@ export default function Persona() {
             alt={`${data.data.attributes.captain_image.data.attributes.alternativeText}`}
             width={250}
             height={250}
+            className="h-auto w-auto"
           />
         </motion.div>
       </div>
@@ -77,6 +79,7 @@ export default function Persona() {
             alt={`${data.data.attributes.tattooed_image.data.attributes.alternativeText}`}
             height={250}
             width={250}
+            className="h-auto w-auto"
           />
         </motion.div>
         <div className="col-span-1"></div>
