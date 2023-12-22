@@ -6,7 +6,7 @@ import Image from "next/image";
 const PORT = process.env.NEXT_PUBLIC_PORT || "http://127.0.0.1:1337";
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-export default function Header() {
+export default function Navigation() {
   const { data, error, isLoading } = useSWR(
     `${PORT}/api/navigation?populate=*`,
     fetcher

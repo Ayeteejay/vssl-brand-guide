@@ -126,15 +126,15 @@
 }
 
 .gin-regular {
-  font-family: "Gin-regular";
+  font-family: "Gin-regular", sans-serif;
 }
 
 .gin-lines {
-  font-family: "Gin-lines";
+  font-family: "Gin-lines", sans-serif;
 }
 
 .wilson {
-  font-family: "Wilson-wells";
+  font-family: "Wilson-wells", serif;
 }
 
 .rift {

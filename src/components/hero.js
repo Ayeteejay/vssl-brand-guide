@@ -56,7 +56,7 @@ export default async function Hero() {
           />
           <WilsonHeader
             title={data.salty}
-            styles={
+            className={
               "absolute -top-5 -left-20 hidden xl:block lg:-left-52 lg:-top-16"
             }
           />

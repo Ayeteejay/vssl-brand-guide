@@ -1,4 +1,9 @@
-import { SecondaryHeader, FontSection, BronzeButton } from "./utilities";
+import {
+  SecondaryHeader,
+  Paragraph,
+  FontSection,
+  BronzeButton,
+} from "./utilities";
 
 const PORT = process.env.NEXT_PUBLIC_PORT || "http://127.0.0.1:1337";
 const getData = async () => {
@@ -17,13 +22,10 @@ export default async function Typography() {
   return (
     <section className="relative max-w-5xl mx-auto px-8 pb-20 sm:pb-28">
       <SecondaryHeader title={data.title} />
-      {data.description.map((item, index) => {
-        return (
-          <p key={index} className="text-smoke text-sm md:text-base elza my-3">
-            {item.children[0].text}
-          </p>
-        );
-      })}
+      <Paragraph
+        description={data.description}
+        className={"text-smoke text-sm md:text-base elza"}
+      />
       {data.typography.map((font) => {
         if (font.font_family.toLowerCase() === "gin") {
           return (
@@ -50,7 +52,7 @@ export default async function Typography() {
               key={font.id}
               title={font.title}
               description={font.description}
-              styles={`text-smoke ${font.font_family} leading-tight text-5xl`}
+              className={`text-smoke ${font.font_family} leading-tight text-5xl`}
             />
           );
         }
@@ -58,7 +60,7 @@ export default async function Typography() {
       <BronzeButton
         title={"Download"}
         link={`${PORT}${data.download.data.attributes.url}`}
-        styles={"mt-10"}
+        className={"mt-10"}
       />
     </section>
   );

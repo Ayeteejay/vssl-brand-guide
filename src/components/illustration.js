@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { SecondaryHeader, BronzeButton } from "./utilities";
+import { SecondaryHeader, Paragraph, BronzeButton } from "./utilities";
 
 const PORT = process.env.NEXT_PUBLIC_PORT || "http://127.0.0.1:1337";
 const getData = async () => {
@@ -23,20 +23,14 @@ export default async function Illustration() {
       <div className="grid md:grid-cols-2">
         <div>
           <SecondaryHeader title={data.title} />
-          {data.description.map((item, index) => {
-            return (
-              <p
-                key={index}
-                className="text-smoke text-sm md:text-base elza my-3"
-              >
-                {item.children[0].text}
-              </p>
-            );
-          })}
+          <Paragraph
+            description={data.description}
+            className={"text-smoke text-sm md:text-base elza"}
+          />
           <BronzeButton
             title={"Download"}
             link={`${PORT}${data.download.data.attributes.url}`}
-            styles={"mt-10 sm:mt-20"}
+            className={"mt-10 sm:mt-20"}
           />
         </div>
         <div className="relative mt-5 md:mt-0">
@@ -44,21 +38,25 @@ export default async function Illustration() {
             let className = null;
             const label = illustration.label.toLowerCase();
             if (label === "lighthouse") {
-              className = "absolute left-0 ";
+              className = "top-5 sm:top-0 left-0 w-[250px]";
             } else if (label === "octopus") {
-              className = "absolute top-20 right-0 z-10 ";
+              className = "top-32 right-5 sm:top-20 sm:right-0 z-10 w-[250px]";
             } else if (label === "mermaid") {
-              className = "absolute top-72 right-32 ";
+              className = "top-72 right-20 sm:right-32 w-[300px]";
             }
             return (
-              <Image
+              <div
                 key={illustration.id}
-                src={`${PORT}${illustration.image.data.attributes.url}`}
-                alt={illustration.image.data.attributes.alternativeText}
-                width={illustration.width}
-                height={illustration.height}
-                className={className}
-              />
+                className={`${className} absolute sm:w-72`}
+              >
+                <Image
+                  src={`${PORT}${illustration.image.data.attributes.url}`}
+                  alt={illustration.image.data.attributes.alternativeText}
+                  width={illustration.width}
+                  height={illustration.height}
+                  className="w-auto h-auto"
+                />
+              </div>
             );
           })}
         </div>

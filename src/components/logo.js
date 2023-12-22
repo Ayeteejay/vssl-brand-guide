@@ -1,6 +1,8 @@
 import Image from "next/image";
 import {
   SecondaryHeader,
+  TertiaryHeader,
+  Paragraph,
   WilsonHeader,
   LogoSection,
   BronzeButton,
@@ -25,26 +27,24 @@ export default async function Logos() {
   const data = await getData();
   return (
     <section className="relative max-w-5xl mx-auto px-8 pb-20 sm:pb-28">
-      <SecondaryHeader title={data.title} styles={"mb-12 sm:mb-14 md:mb-20"} />
+      <SecondaryHeader
+        title={data.title}
+        className={"mb-12 sm:mb-14 md:mb-20"}
+      />
       <div className="relative grid md:grid-cols-5 md:gap-20">
         <div className="md:col-span-2">
-          <h5 className="text-smoke gin-regular text-2xl transition-all duration-500 group-hover:text-bronze">
-            {data.primary_title}
-          </h5>
-          {data.primary_description.map((item, index) => {
-            return (
-              <p
-                key={index}
-                className="text-smoke text-sm md:text-base elza my-3"
-              >
-                {item.children[0].text}
-              </p>
-            );
-          })}
+          <TertiaryHeader
+            title={data.primary_title}
+            className={"text-smoke mb-3"}
+          />
+          <Paragraph
+            description={data.primary_description}
+            className={"text-smoke text-sm md:text-base elza"}
+          />
         </div>
         <WilsonHeader
           title={data.primary_salty}
-          styles={"block sm:hidden absolute top-36 -left-5 sm:top-32 z-10"}
+          className={"block sm:hidden absolute top-36 -left-5 sm:top-32 z-10"}
         />
         <div className="md:col-span-3 flex mt-3 md:mt-0 mb-6 md:mb-0 overflow-scroll sm:grid sm:grid-cols-2 md:grid-cols-2">
           {data.primary_logos.map((logo) => {
@@ -62,27 +62,25 @@ export default async function Logos() {
         </div>
       </div>
       <div className="grid md:grid-cols-2 md:gap-20 md:mt-32">
-        {["simplified", "flag"].map((item, index) => {
-          return (
-            <LogoSection
-              key={item}
-              title={index === 0 ? data.simplified_title : data.flag_title}
-              description={
-                index === 0
-                  ? data.simplified_description
-                  : data.flag_description
-              }
-              logos={index === 0 ? data.simplified_logos : data.flag_logos}
-              salty={index === 0 ? data.simplified_salty : data.flag_salty}
-              port={PORT}
-            />
-          );
-        })}
+        <LogoSection
+          title={data.simplified_title}
+          description={data.simplified_description}
+          logos={data.simplified_logos}
+          salty={data.simplified_salty}
+          port={PORT}
+        />
+        <LogoSection
+          title={data.flag_title}
+          description={data.flag_description}
+          logos={data.flag_logos}
+          salty={data.flag_salty}
+          port={PORT}
+        />
       </div>
       <BronzeButton
         title="Download"
         link={`${PORT}${data.download.data.attributes.url}`}
-        styles={"mt-10 md:mt-20"}
+        className={"mt-10 md:mt-20"}
       />
     </section>
   );

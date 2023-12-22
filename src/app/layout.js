@@ -1,4 +1,4 @@
-import Header from "@/components/header";
+import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import ProgressBar from "@/components/progressBar";
 import Distressed from "@/components/distressed";
@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="bg-ink">
       <body>
-        <Header />
+        <Navigation />
         <Distressed />
         <main>{children}</main>
         <ProgressBar />

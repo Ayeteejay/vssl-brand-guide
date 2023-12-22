@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from "uuid";
 import Image from "next/image";
 import Markdown from "react-markdown";
 import { PrimaryHeader } from "./utilities";
@@ -24,7 +25,7 @@ export default async function Footer() {
           {data.description.map((item, index) => {
             return (
               <Markdown
-                key={index}
+                key={uuidv4()}
                 className={`markdown text-smoke text-sm md:text-base elza ${
                   index === 0 ? "mt-6" : "my-3"
                 }`}

@@ -16,7 +16,7 @@ import Photography from "@/components/photography";
 
 export default function Home() {
   return (
-    <div>
+    <>
       <Hero />
       <Positioning />
       <Persona />
@@ -32,6 +32,6 @@ export default function Home() {
       <Illustration />
       <Grid />
       <Rules />
-    </div>
+    </>
   );
 }

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { BronzeButton, SecondaryHeader } from "./utilities";
+import { BronzeButton, SecondaryHeader, Paragraph } from "./utilities";
 
 const PORT = process.env.NEXT_PUBLIC_PORT || "http://127.0.0.1:1337";
 const getData = async () => {
@@ -19,24 +19,18 @@ const getData = async () => {
 export default async function Photography() {
   const data = await getData();
   return (
-    <section className="relative pb-20 sm:pb-28">
+    <section className="relative pb-20 sm:pb-28 overflow-hidden">
       <div className="grid lg:grid-cols-2 md:gap-20 max-w-5xl mx-auto px-8">
         <div>
           <SecondaryHeader title={data.title} />
-          {data.description.map((item, index) => {
-            return (
-              <p
-                key={index}
-                className="relative text-smoke text-sm md:text-base elza mt-6"
-              >
-                {item.children[0].text}
-              </p>
-            );
-          })}
+          <Paragraph
+            description={data.description}
+            className={"relative text-smoke text-sm md:text-base elza"}
+          />
           <BronzeButton
             title={"Download"}
             link={`${PORT}${data.download.data.attributes.url}`}
-            styles={"mb-28 sm:mb-0 mt-10 md:mt-20"}
+            className={"mb-28 sm:mb-0 mt-10 md:mt-20"}
           />
         </div>
         <div></div>

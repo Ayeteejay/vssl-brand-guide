@@ -1,4 +1,4 @@
-import { SecondaryHeader, GinCard } from "./utilities";
+import { SecondaryHeader, Paragraph, GinCard } from "./utilities";
 
 const PORT = process.env.NEXT_PUBLIC_PORT || "http://127.0.0.1:1337";
 const getData = async () => {
@@ -19,28 +19,27 @@ export default async function Positioning() {
       <div className="bg-bronze p-10 md:p-20 grid md:grid-cols-5 gap-5 md:gap-10 items-center">
         <div className="md:col-span-3">
           <SecondaryHeader title={`${data.title}`} />
-          <p className="elza text-sm md:text-base text-ink">
-            {data.description[0].children[0].text}
-          </p>
-          <ul className="text-sm md:text-base text-smoke mt-5">
-            {data.bullets.map((bullet, index) => {
-              return (
-                <li key={index} className="mb-3">
-                  {bullet.children[0].text}
-                </li>
-              );
-            })}
-          </ul>
+          <Paragraph
+            description={data.description}
+            className={"elza text-sm md:text-base text-ink"}
+          />
+          <div className="mt-5">
+            <Paragraph
+              description={data.bullets}
+              className={"text-sm md:text-base text-smoke"}
+            />
+          </div>
         </div>
         <div className="flex gap-5 flex-col md:col-span-2">
-          <GinCard
-            title={data.mission_title}
-            description={data.mission_description[0].children[0].text}
-          />
-          <GinCard
-            title={data.vision_title}
-            description={data.vision_description[0].children[0].text}
-          />
+          {data.positioning.map((position) => {
+            return (
+              <GinCard
+                key={position.id}
+                title={position.title}
+                description={position.description}
+              />
+            );
+          })}
         </div>
       </div>
     </section>

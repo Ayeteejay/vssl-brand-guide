@@ -1,4 +1,4 @@
-import { SecondaryHeader, TertiaryHeader } from "./utilities";
+import { SecondaryHeader, TertiaryHeader, Paragraph } from "./utilities";
 
 const PORT = process.env.NEXT_PUBLIC_PORT || "http://127.0.0.1:1337";
 const getData = async () => {
@@ -18,16 +18,10 @@ export default async function Colors() {
       <div className="grid md:grid-cols-2">
         <div>
           <SecondaryHeader title={data.title} />
-          {data.description.map((item, index) => {
-            return (
-              <p
-                key={index}
-                className="text-smoke text-sm md:text-base elza my-3"
-              >
-                {item.children[0].text}
-              </p>
-            );
-          })}
+          <Paragraph
+            description={data.description}
+            className={"text-smoke text-sm md:text-base elza"}
+          />
         </div>
       </div>
       <div className="grid sm:grid-cols-2 my-14 md:my-20">
@@ -39,7 +33,7 @@ export default async function Colors() {
             >
               <TertiaryHeader
                 title={color.title}
-                styles={`mb-4 text-${color.title_color}`}
+                className={`mb-4 text-${color.title_color}`}
               />
               <p
                 className={`rift font-bold leading-tight text-${color.code_color}`}
@@ -57,17 +51,14 @@ export default async function Colors() {
       </div>
       <div className="grid md:grid-cols-2 md:gap-20">
         <div>
-          <TertiaryHeader title={data.secondary_title} styles={"text-smoke"} />
-          {data.secondary_description.map((item, index) => {
-            return (
-              <p
-                key={index}
-                className="text-smoke text-sm md:text-base elza my-3"
-              >
-                {item.children[0].text}
-              </p>
-            );
-          })}
+          <TertiaryHeader
+            title={data.secondary_title}
+            className={"text-smoke mb-3"}
+          />
+          <Paragraph
+            description={data.secondary_description}
+            className={"text-smoke text-sm md:text-base elza"}
+          />
         </div>
         <div className="grid grid-cols-4 sm:py-5 mt-5 sm:mt-0">
           {data.secondary_colors.map((color) => {

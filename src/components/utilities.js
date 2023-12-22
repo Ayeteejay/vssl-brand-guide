@@ -1,9 +1,9 @@
 "use client";
+import { v4 as uuidv4 } from "uuid";
 import { motion } from "framer-motion";
-import { useState } from "react";
 import Image from "next/image";
 
-// Texturized Gin headers
+// H1
 export function PrimaryHeader(props) {
   return (
     <h1 className="text-8xl relative gin-regular text-white">
@@ -15,21 +15,29 @@ export function PrimaryHeader(props) {
   );
 }
 
-// Gin subheaders
+// H2
 export function SecondaryHeader(props) {
   return (
     <h2
-      className={`text-smoke text-6xl font-medium gin-regular mb-4 ${props.styles}`}
+      className={`text-smoke text-6xl font-medium gin-regular mb-4 ${
+        props.className ? props.className : ""
+      }`}
     >
       {props.title}
     </h2>
   );
 }
 
-// TertiaryHeader
+// H5
 export function TertiaryHeader(props) {
   return (
-    <h5 className={`gin-regular text-2xl ${props.styles}`}>{props.title}</h5>
+    <h5
+      className={`gin-regular text-2xl ${
+        props.className ? props.className : ""
+      }`}
+    >
+      {props.title}
+    </h5>
   );
 }
 
@@ -42,30 +50,29 @@ export function WilsonHeader(props) {
       ? words.slice(0, halfLength).join(" ")
       : words.slice(halfLength).join(" ");
   };
-  const [wilsonTitle, setWilsonTitle] = useState({
-    firstLine: sliceStr(props.title, "start"),
-    secondLine: sliceStr(props.title, "end"),
-  });
   return (
     <h4
-      className={`text-white wilson text-xl xl:text-2xl bg-ink py-2 p-1 inline-block -rotate-2 ${props.styles}`}
+      className={`text-white wilson text-xl xl:text-2xl bg-ink py-2 p-1 inline-block -rotate-2 ${
+        props.className ? props.className : ""
+      }`}
     >
-      <span>{wilsonTitle.firstLine}</span>
+      <span>{sliceStr(props.title, "start")}</span>
       <br />
       <span className="rotate-3 block translate-x-2 -translate-y-1">
-        {wilsonTitle.secondLine}
+        {sliceStr(props.title, "end")}
       </span>
     </h4>
   );
 }
 
-// Gin callout cards
+// Gin cards
 export function GinCard(props) {
   return (
     <div className="border border-ink transition-all duration-300 md:hover:-rotate-2">
-      <h5 className="text-ink gin-regular text-2xl border-b border-ink py-3 px-4">
-        {props.title}
-      </h5>
+      <TertiaryHeader
+        title={props.title}
+        className={"border-b border-ink py-3 px-4 text-ink"}
+      />
       <p className="text-smoke text-sm md:text-base elza py-4 px-4">
         {props.description}
       </p>
@@ -73,18 +80,15 @@ export function GinCard(props) {
   );
 }
 
-// Profile cards
+// Persona cards
 export function PersonaCard(props) {
   return (
     <div>
-      <h5 className="text-bronze gin-regular text-2xl">{props.title}</h5>
-      {props.description.map((persona, index) => {
-        return (
-          <p key={index} className="text-smoke text-sm md:text-base my-3">
-            {persona.children[0].text}
-          </p>
-        );
-      })}
+      <TertiaryHeader title={props.title} className={"text-bronze mb-3"} />
+      <Paragraph
+        description={props.description}
+        className={"text-smoke text-sm md:text-base"}
+      />
     </div>
   );
 }
@@ -115,28 +119,24 @@ export function ValueCard(props) {
         viewport={{ once: false }}
         transition={{ duration: 0.6, type: "tween" }}
       >
-        <h5 className="text-smoke gin-regular text-2xl">{props.title}</h5>
-        {props.description.map((value, index) => {
-          return (
-            <p
-              key={index}
-              className="text-smoke text-sm md:text-base elza my-3"
-            >
-              {value.children[0].text}
-            </p>
-          );
-        })}
+        <TertiaryHeader title={props.title} className={"text-smoke mb-3"} />
+        <Paragraph
+          description={props.description}
+          className={"text-smoke text-sm md:text-base elza"}
+        />
       </motion.div>
     </div>
   );
 }
 
-// Bronze circular buttons
+// Bronze buttons
 export function BronzeButton(props) {
   return (
     <a
       href={props.link}
-      className={`cursor-pointer w-[115px] h-[115px] -rotate-6 rounded-full flex items-center justify-center transition-all duration-300 border border-bronze text-smoke rift text-lg font-bold tracking-widest hover:bg-bronze hover:rotate-0 ${props.styles}`}
+      className={`cursor-pointer w-[115px] h-[115px] -rotate-6 rounded-full flex items-center justify-center transition-all duration-300 border border-bronze text-smoke rift text-lg font-bold tracking-widest hover:bg-bronze hover:rotate-0 ${
+        props.className ? props.className : ""
+      }`}
     >
       {props.title}
     </a>
@@ -147,19 +147,14 @@ export function BronzeButton(props) {
 export function LogoSection(props) {
   return (
     <div className="relative">
-      <h5 className="text-smoke gin-regular text-2xl transition-all duration-500 group-hover:text-bronze">
-        {props.title}
-      </h5>
-      {props.description.map((item, index) => {
-        return (
-          <p key={index} className="text-smoke text-sm md:text-base elza my-3">
-            {item.children[0].text}
-          </p>
-        );
-      })}
+      <TertiaryHeader title={props.title} className={"text-smoke mb-4"} />
+      <Paragraph
+        description={props.description}
+        className={"text-smoke text-sm md:text-base elza"}
+      />
       <WilsonHeader
         title={props.salty}
-        styles={"block sm:hidden absolute top-36 -left-5 sm:top-32 z-10"}
+        className={"block sm:hidden absolute top-36 -left-5 sm:top-32 z-10"}
       />
       <div className="flex overflow-scroll sm:grid sm:grid-cols-3 mb-6 md:mb-0">
         {props.logos.map((logo) => {
@@ -183,8 +178,33 @@ export function LogoSection(props) {
 export function FontSection(props) {
   return (
     <div className="px-5 py-8 md:py-10 md:px-14">
-      <p className={`break-all ${props.styles}`}>{props.description}</p>
+      <p className={`break-all ${props.className ? props.className : ""}`}>
+        {props.description}
+      </p>
       <p className="text-faded_iron rift font-bold mt-5">{props.title}</p>
     </div>
+  );
+}
+
+// Paragraphs (body text)
+export function Paragraph(props) {
+  return (
+    <>
+      {props.description.map((item, index) => {
+        return (
+          <p
+            key={uuidv4()}
+            className={`${props.className ? props.className : ""} ${
+              props.description.length > 0 &&
+              index === props.description.length - 1
+                ? ""
+                : "mb-3"
+            }`}
+          >
+            {item.children[0].text}
+          </p>
+        );
+      })}
+    </>
   );
 }

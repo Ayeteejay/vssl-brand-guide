@@ -84,10 +84,10 @@ export default function Persona() {
         </motion.div>
         <div className="col-span-1"></div>
         <div className="flex col-span-4 md:pl-20 gap-10">
-          {data.data.attributes.personas.map((persona, index) => {
+          {data.data.attributes.personas.map((persona) => {
             return (
               <PersonaCard
-                key={index}
+                key={persona.id}
                 title={persona.title}
                 description={persona.description}
               />

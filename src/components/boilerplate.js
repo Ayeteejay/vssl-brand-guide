@@ -1,4 +1,4 @@
-import { SecondaryHeader } from "./utilities";
+import { SecondaryHeader, TertiaryHeader, Paragraph } from "./utilities";
 
 const PORT = process.env.NEXT_PUBLIC_PORT || "http://127.0.0.1:1337";
 const getData = async () => {
@@ -17,24 +17,23 @@ export default async function Boilerplate() {
 
   return (
     <section className="max-w-5xl mx-auto px-8 relative mb-16 md:mb-32">
-      <SecondaryHeader title={data.title} styles={"mb-10"} />
+      <SecondaryHeader title={data.title} className={"md:mb-14"} />
       <div className="grid md:grid-cols-2 gap-5 md:gap-14">
-        {data.about.map((item, index) => {
+        {data.about.map((item) => {
           return (
-            <div key={index} className="group">
-              <h5 className="text-smoke gin-regular text-2xl transition-all duration-500 group-hover:text-bronze">
-                {item.title}
-              </h5>
-              {item.description.map((subitem, index) => {
-                return (
-                  <p
-                    key={index}
-                    className="text-smoke text-sm md:text-base elza mt-3 transition-all duration-500 group-hover:text-bronze"
-                  >
-                    {subitem.children[0].text}
-                  </p>
-                );
-              })}
+            <div key={item.id} className="group">
+              <TertiaryHeader
+                title={item.title}
+                className={
+                  "text-smoke transition-all duration-500 group-hover:text-bronze"
+                }
+              />
+              <Paragraph
+                description={item.description}
+                className={
+                  "text-smoke text-sm md:text-base elza mt-3 transition-all duration-500 group-hover:text-bronze"
+                }
+              />
             </div>
           );
         })}

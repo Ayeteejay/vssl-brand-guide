@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { SecondaryHeader } from "./utilities";
+import { SecondaryHeader, Paragraph } from "./utilities";
 
 const PORT = process.env.NEXT_PUBLIC_PORT || "http://127.0.0.1:1337";
 const getData = async () => {
@@ -51,30 +51,18 @@ export default async function Voice() {
                 className="grid-in-boat relative m-3"
               />
             </div>
-            {data.tone.map((item, index) => {
-              return (
-                <p
-                  key={index}
-                  className="text-smoke text-sm md:text-base elza mt-4 md:mt-0 md:mb-4"
-                >
-                  {item.children[0].text}
-                </p>
-              );
-            })}
+            <Paragraph
+              description={data.tone}
+              className={
+                "text-smoke text-sm md:text-base elza mt-4 md:mt-0 md:mb-4"
+              }
+            />
           </div>
           <div className="order-1 md:order-2">
-            {data.description.map((item, index) => {
-              return (
-                <p
-                  key={index}
-                  className={`text-smoke text-sm md:text-base elza ${
-                    index === 0 ? "mb-4" : ""
-                  }`}
-                >
-                  {item.children[0].text}
-                </p>
-              );
-            })}
+            <Paragraph
+              description={data.description}
+              className={"text-smoke text-sm md:text-base elza"}
+            />
           </div>
         </div>
       </div>

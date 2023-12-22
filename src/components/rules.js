@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { SecondaryHeader } from "./utilities";
+import { SecondaryHeader, Paragraph } from "./utilities";
 
 const PORT = process.env.NEXT_PUBLIC_PORT || "http://127.0.0.1:1337";
 const getData = async () => {
@@ -23,22 +23,16 @@ export default async function Rules() {
       <div className="grid md:grid-cols-2">
         <div>
           <SecondaryHeader title={data.title} />
-          {data.description.map((item, index) => {
-            return (
-              <p
-                key={index}
-                className="text-smoke text-sm md:text-base elza my-3"
-              >
-                {item.children[0].text}
-              </p>
-            );
-          })}
+          <Paragraph
+            description={data.description}
+            className={"text-smoke text-sm md:text-base elza"}
+          />
         </div>
       </div>
       <div className="grid sm:grid-cols-2 sm:gap-7 my-14 md:my-20">
         {data.rules.map((rule) => {
           return (
-            <div key={rule.id} className="">
+            <div key={rule.id}>
               <Image
                 src={`${PORT}${rule.image.data.attributes.url}`}
                 alt={rule.image.data.attributes.alternativeText}
