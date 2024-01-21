@@ -19,7 +19,7 @@ export function PrimaryHeader(props) {
 export function SecondaryHeader(props) {
   return (
     <h2
-      className={`text-smoke text-6xl font-medium gin-regular mb-4 ${
+      className={`text-smoke text-6xl font-medium gin-regular mb-4 antialiased ${
         props.className ? props.className : ""
       }`}
     >
@@ -32,7 +32,7 @@ export function SecondaryHeader(props) {
 export function TertiaryHeader(props) {
   return (
     <h5
-      className={`gin-regular text-2xl ${
+      className={`gin-regular text-2xl antialiased ${
         props.className ? props.className : ""
       }`}
     >
@@ -119,7 +119,10 @@ export function ValueCard(props) {
         viewport={{ once: false }}
         transition={{ duration: 0.6, type: "tween" }}
       >
-        <TertiaryHeader title={props.title} className={"text-smoke mb-3"} />
+        <TertiaryHeader
+          title={props.title}
+          className={"text-smoke mb-3 antialiased"}
+        />
         <Paragraph
           description={props.description}
           className={"text-smoke text-sm md:text-base elza"}
@@ -150,7 +153,7 @@ export function LogoSection(props) {
       <TertiaryHeader title={props.title} className={"text-smoke mb-4"} />
       <Paragraph
         description={props.description}
-        className={"text-smoke text-sm md:text-base elza"}
+        className={"text-smoke text-sm md:text-base elza md:min-h-[125px]"}
       />
       <WilsonHeader
         title={props.salty}
@@ -165,7 +168,7 @@ export function LogoSection(props) {
               height={2000}
               width={2000}
               alt={logo.image.data.attributes.alternativeText}
-              className={`mt-5 p-10 bg-${logo.background_color}`}
+              className={`md:h-28 lg:h-32 mt-5 p-10 bg-${logo.background_color}`}
             />
           );
         })}
@@ -194,7 +197,9 @@ export function Paragraph(props) {
         return (
           <p
             key={uuidv4()}
-            className={`${props.className ? props.className : ""} ${
+            className={`antialiased font-light ${
+              props.className ? props.className : ""
+            } ${
               props.description.length > 0 &&
               index === props.description.length - 1
                 ? ""

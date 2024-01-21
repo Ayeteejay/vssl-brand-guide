@@ -26,13 +26,27 @@ const getData = async () => {
 export default async function Logos() {
   const data = await getData();
   return (
-    <section className="relative max-w-5xl mx-auto px-8 pb-20 sm:pb-28">
-      <SecondaryHeader
-        title={data.title}
-        className={"mb-12 sm:mb-14 md:mb-20"}
-      />
-      <div className="relative grid md:grid-cols-5 md:gap-20">
+    <section className="relative">
+      <div className="overflow-scroll hidden lg:grid sm:grid-cols-2 md:grid-cols-2 md:w-[650px] xl:w-[750px] absolute right-0 top-[145px]">
+        {data.primary_logos.map((logo) => {
+          return (
+            <Image
+              key={logo.id}
+              src={`${PORT}${logo.image.data.attributes.url}`}
+              height={2000}
+              width={2000}
+              alt={logo.image.data.attributes.alternativeText}
+              className={`py-12 px-16 bg-${logo.background_color}`}
+            />
+          );
+        })}
+      </div>
+      <div className="relative grid lg:grid-cols-5 md:gap-5 lg:gap-20 max-w-5xl mx-auto px-8 pb-0 lg:pb-80">
         <div className="md:col-span-2">
+          <SecondaryHeader
+            title={data.title}
+            className={"mb-12 sm:mb-14 md:mb-20"}
+          />
           <TertiaryHeader
             title={data.primary_title}
             className={"text-smoke mb-3"}
@@ -44,9 +58,9 @@ export default async function Logos() {
         </div>
         <WilsonHeader
           title={data.primary_salty}
-          className={"block sm:hidden absolute top-36 -left-5 sm:top-32 z-10"}
+          className={"block sm:hidden absolute top-52 left-5 z-10"}
         />
-        <div className="md:col-span-3 flex mt-3 md:mt-0 mb-6 md:mb-0 overflow-scroll sm:grid sm:grid-cols-2 md:grid-cols-2">
+        <div className="md:col-span-3 flex lg:hidden mt-5 md:mt-0 mb-6 md:mb-0 overflow-scroll sm:grid sm:grid-cols-2 md:grid-cols-4">
           {data.primary_logos.map((logo) => {
             return (
               <Image
@@ -55,33 +69,35 @@ export default async function Logos() {
                 height={2000}
                 width={2000}
                 alt={logo.image.data.attributes.alternativeText}
-                className={`py-12 px-16 bg-${logo.background_color}`}
+                className={`py-12 sm:py-10 lg:py-12 px-16 bg-${logo.background_color}`}
               />
             );
           })}
         </div>
       </div>
-      <div className="grid md:grid-cols-2 md:gap-20 md:mt-32">
-        <LogoSection
-          title={data.simplified_title}
-          description={data.simplified_description}
-          logos={data.simplified_logos}
-          salty={data.simplified_salty}
-          port={PORT}
-        />
-        <LogoSection
-          title={data.flag_title}
-          description={data.flag_description}
-          logos={data.flag_logos}
-          salty={data.flag_salty}
-          port={PORT}
+      <div className="max-w-5xl mx-auto px-8 pb-20 sm:pb-28">
+        <div className="grid md:grid-cols-2 md:gap-20 md:mt-20 lg:mt-28">
+          <LogoSection
+            title={data.simplified_title}
+            description={data.simplified_description}
+            logos={data.simplified_logos}
+            salty={data.simplified_salty}
+            port={PORT}
+          />
+          <LogoSection
+            title={data.flag_title}
+            description={data.flag_description}
+            logos={data.flag_logos}
+            salty={data.flag_salty}
+            port={PORT}
+          />
+        </div>
+        <BronzeButton
+          title="Download"
+          link={`${PORT}${data.download.data.attributes.url}`}
+          className={"mt-10 md:mt-20"}
         />
       </div>
-      <BronzeButton
-        title="Download"
-        link={`${PORT}${data.download.data.attributes.url}`}
-        className={"mt-10 md:mt-20"}
-      />
     </section>
   );
 }

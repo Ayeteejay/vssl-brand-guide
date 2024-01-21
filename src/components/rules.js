@@ -39,7 +39,7 @@ export default async function Rules() {
                 height={500}
                 width={500}
               />
-              <p className="text-smoke text-sm md:text-base elza mt-4 mb-12 sm:mb-5 text-center">
+              <p className="text-smoke text-sm md:text-base elza mt-4 mb-12 sm:mb-5 text-center antialiased">
                 {rule.description}
               </p>
             </div>

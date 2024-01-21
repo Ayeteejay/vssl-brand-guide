@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { PrimaryHeader, WilsonHeader } from "./utilities";
+import { PrimaryHeader, WilsonHeader, Paragraph } from "./utilities";
 
 const PORT = process.env.NEXT_PUBLIC_PORT || "http://127.0.0.1:1337";
 const getData = async () => {
@@ -19,9 +19,10 @@ export default async function Hero() {
     <section className="relative">
       <div className="relative z-10 max-w-xl mx-auto px-8 sm:px-0 pt-40">
         <PrimaryHeader title={data.title} />
-        <p className="elza text-white relative text-sm md:text-base pt-6">
-          {data.description[0].children[0].text}
-        </p>
+        <Paragraph
+          description={data.description}
+          className={"elza text-white relative text-sm md:text-base pt-6"}
+        />
       </div>
       <div className="w-full absolute top-0 left-0 z-0 grid grid-areas-hero_small sm:grid-areas-hero_large">
         <Image
