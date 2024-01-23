@@ -2,7 +2,7 @@
 import useSWR from "swr";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import { SecondaryHeader, PersonaCard } from "./utilities";
+import { SecondaryHeader, PersonaCard, Paragraph } from "./utilities";
 
 const PORT = process.env.NEXT_PUBLIC_PORT || "http://127.0.0.1:1337";
 const fetcher = (url) => fetch(url).then((res) => res.json());
@@ -21,7 +21,7 @@ export default function Persona() {
   if (isLoading) return "Loading...";
 
   return (
-    <section className="max-w-5xl mx-auto px-8 sm:px-[70px] md:px-28 relative py-10 sm:py-16">
+    <section className="max-w-5xl mx-auto px-8 sm:px-[70px] md:px-28 relative pt-4 pb-20 sm:py-32">
       <div className="grid md:grid-cols-2 md:items-center">
         <div>
           <div className="z-10 relative">
@@ -32,22 +32,14 @@ export default function Persona() {
               viewport={{ once: false }}
               transition={{ duration: 1, type: "tween" }}
             >
-              {data.data.attributes.description.map((item, index) => {
-                return (
-                  <p
-                    className={`text-smoke elza text-sm md:text-base ${
-                      index === 0 ? "mb-4" : ""
-                    }`}
-                    key={index}
-                  >
-                    {item.children[0].text}
-                  </p>
-                );
-              })}
+              <Paragraph
+                description={data.data.attributes.description}
+                className={"text-smoke"}
+              />
             </motion.div>
           </div>
           <Image
-            className="absolute -top-32 right-0 z-0 transition-all duration-300 opacity-40 md:opacity-100 h-auto w-auto"
+            className="absolute -top-32 right-0 z-0 transition-all duration-300 opacity-40 md:opacity-60 h-auto w-auto"
             src={`${PORT}${data.data.attributes.shipwreck_image.data.attributes.url}`}
             alt={`${data.data.attributes.shipwreck_image.data.attributes.alternativeText}`}
             width={500}

@@ -23,10 +23,7 @@ export default async function Illustration() {
       <div className="grid md:grid-cols-2">
         <div>
           <SecondaryHeader title={data.title} />
-          <Paragraph
-            description={data.description}
-            className={"text-smoke text-sm md:text-base elza"}
-          />
+          <Paragraph description={data.description} className={"text-smoke"} />
           <BronzeButton
             title={"Download"}
             link={`${PORT}${data.download.data.attributes.url}`}

@@ -27,7 +27,7 @@ export default async function Logos() {
   const data = await getData();
   return (
     <section className="relative">
-      <div className="overflow-scroll hidden lg:grid sm:grid-cols-2 md:grid-cols-2 md:w-[650px] xl:w-[750px] absolute right-0 top-[145px]">
+      <div className="overflow-scroll hidden lg:grid sm:grid-cols-2 md:grid-cols-2 md:w-[550px] xl:w-[750px] absolute right-0 top-[145px]">
         {data.primary_logos.map((logo) => {
           return (
             <Image
@@ -41,8 +41,8 @@ export default async function Logos() {
           );
         })}
       </div>
-      <div className="relative grid lg:grid-cols-5 md:gap-5 lg:gap-20 max-w-5xl mx-auto px-8 pb-0 lg:pb-80">
-        <div className="md:col-span-2">
+      <div className="relative grid lg:grid-cols-5 md:gap-6 lg:gap-0 max-w-5xl mx-auto px-8 pb-0 lg:pb-80">
+        <div className="lg:col-span-2">
           <SecondaryHeader
             title={data.title}
             className={"mb-12 sm:mb-14 md:mb-20"}
@@ -53,14 +53,14 @@ export default async function Logos() {
           />
           <Paragraph
             description={data.primary_description}
-            className={"text-smoke text-sm md:text-base elza"}
+            className={"text-smoke"}
           />
         </div>
         <WilsonHeader
           title={data.primary_salty}
-          className={"block sm:hidden absolute top-52 left-5 z-10"}
+          className={"block sm:hidden absolute top-60 left-5 z-10"}
         />
-        <div className="md:col-span-3 flex lg:hidden mt-5 md:mt-0 mb-6 md:mb-0 overflow-scroll sm:grid sm:grid-cols-2 md:grid-cols-4">
+        <div className="lg:col-span-3 flex lg:hidden mt-5 md:mt-0 mb-6 md:mb-0 overflow-scroll sm:grid sm:grid-cols-2 md:grid-cols-4">
           {data.primary_logos.map((logo) => {
             return (
               <Image
@@ -76,7 +76,7 @@ export default async function Logos() {
         </div>
       </div>
       <div className="max-w-5xl mx-auto px-8 pb-20 sm:pb-28">
-        <div className="grid md:grid-cols-2 md:gap-20 md:mt-20 lg:mt-28">
+        <div className="grid md:grid-cols-2 md:gap-20 md:mt-6 xl:mt-28">
           <LogoSection
             title={data.simplified_title}
             description={data.simplified_description}

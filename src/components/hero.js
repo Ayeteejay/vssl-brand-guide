@@ -21,7 +21,7 @@ export default async function Hero() {
         <PrimaryHeader title={data.title} />
         <Paragraph
           description={data.description}
-          className={"elza text-white relative text-sm md:text-base pt-6"}
+          className={"text-smoke relative pt-6"}
         />
       </div>
       <div className="w-full absolute top-0 left-0 z-0 grid grid-areas-hero_small sm:grid-areas-hero_large">

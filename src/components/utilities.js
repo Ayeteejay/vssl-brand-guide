@@ -41,7 +41,7 @@ export function TertiaryHeader(props) {
   );
 }
 
-// Ink colored Wilson text
+// Wilson headers
 export function WilsonHeader(props) {
   const halfLength = Math.floor(props.title.split(" ").length / 2);
   const sliceStr = (str, mode) => {
@@ -73,7 +73,7 @@ export function GinCard(props) {
         title={props.title}
         className={"border-b border-ink py-3 px-4 text-ink"}
       />
-      <p className="text-smoke text-sm md:text-base elza py-4 px-4">
+      <p className="text-smoke antialiased font-light text-sm md:text-base elza py-4 px-4">
         {props.description}
       </p>
     </div>
@@ -168,7 +168,7 @@ export function LogoSection(props) {
               height={2000}
               width={2000}
               alt={logo.image.data.attributes.alternativeText}
-              className={`md:h-28 lg:h-32 mt-5 p-10 bg-${logo.background_color}`}
+              className={`md:h-28 lg:h-32 mt-5 p-10 md:p-8 lg:p-10 bg-${logo.background_color}`}
             />
           );
         })}
@@ -189,7 +189,7 @@ export function FontSection(props) {
   );
 }
 
-// Paragraphs (body text)
+// Paragraphs
 export function Paragraph(props) {
   return (
     <>
@@ -197,7 +197,7 @@ export function Paragraph(props) {
         return (
           <p
             key={uuidv4()}
-            className={`antialiased font-light ${
+            className={`text-sm md:text-base elza antialiased font-light ${
               props.className ? props.className : ""
             } ${
               props.description.length > 0 &&

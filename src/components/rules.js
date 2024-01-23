@@ -19,17 +19,14 @@ const getData = async () => {
 export default async function Rules() {
   const data = await getData();
   return (
-    <section className="relative max-w-5xl mx-auto px-8 pb-20 sm:pb-28">
+    <section className="relative max-w-5xl mx-auto px-8 pb-0 sm:pb-20">
       <div className="grid md:grid-cols-2">
         <div>
           <SecondaryHeader title={data.title} />
-          <Paragraph
-            description={data.description}
-            className={"text-smoke text-sm md:text-base elza"}
-          />
+          <Paragraph description={data.description} className={"text-smoke"} />
         </div>
       </div>
-      <div className="grid sm:grid-cols-2 sm:gap-7 my-14 md:my-20">
+      <div className="grid sm:grid-cols-2 sm:gap-7 my-12 sm:my-14 md:my-20">
         {data.rules.map((rule) => {
           return (
             <div key={rule.id}>

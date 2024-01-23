@@ -23,9 +23,7 @@ export default async function Grit() {
             <PrimaryHeader title={data.title} />
             <Paragraph
               description={data.description}
-              className={
-                "text-smoke text-sm md:text-base elza mt-6 mb-4 lg:w-[500px]"
-              }
+              className={"text-smoke mt-6 mb-4 lg:w-[500px]"}
             />
           </div>
         </div>

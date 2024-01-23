@@ -21,11 +21,10 @@ export default async function Typography() {
   const data = await getData();
   return (
     <section className="relative max-w-5xl mx-auto px-8 pb-20 sm:pb-28">
-      <SecondaryHeader title={data.title} />
-      <Paragraph
-        description={data.description}
-        className={"text-smoke text-sm md:text-base elza"}
-      />
+      <div className="sm:w-[600px]">
+        <SecondaryHeader title={data.title} />
+        <Paragraph description={data.description} className={"text-smoke"} />
+      </div>
       {data.typography.map((font) => {
         if (font.font_family.toLowerCase() === "gin") {
           return (

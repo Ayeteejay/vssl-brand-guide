@@ -22,17 +22,10 @@ export default async function Boilerplate() {
         {data.about.map((item) => {
           return (
             <div key={item.id} className="group">
-              <TertiaryHeader
-                title={item.title}
-                className={
-                  "text-smoke transition-all duration-500 group-hover:text-bronze"
-                }
-              />
+              <TertiaryHeader title={item.title} className={"text-smoke"} />
               <Paragraph
                 description={item.description}
-                className={
-                  "text-smoke text-sm md:text-base elza mt-3 transition-all duration-500 group-hover:text-bronze"
-                }
+                className={"text-smoke mt-3"}
               />
             </div>
           );

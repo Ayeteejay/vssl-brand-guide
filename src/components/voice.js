@@ -53,15 +53,13 @@ export default async function Voice() {
             </div>
             <Paragraph
               description={data.tone}
-              className={
-                "text-smoke text-sm md:text-base elza mt-4 md:mt-0 md:mb-4"
-              }
+              className={"text-smoke mt-4 md:mt-0 md:mb-4"}
             />
           </div>
           <div className="order-1 md:order-2">
             <Paragraph
               description={data.description}
-              className={"text-smoke text-sm md:text-base elza"}
+              className={"text-smoke"}
             />
           </div>
         </div>

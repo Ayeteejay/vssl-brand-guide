@@ -20,10 +20,7 @@ export default async function Texture() {
       <div className="grid md:grid-cols-2">
         <div>
           <SecondaryHeader title={data.title} />
-          <Paragraph
-            description={data.description}
-            className={"text-smoke text-sm md:text-base elza"}
-          />
+          <Paragraph description={data.description} className={"text-smoke"} />
         </div>
       </div>
       <div className="my-14 md:my-20 grid grid-cols-4 sm:grid-cols-2 sm:gap-8">

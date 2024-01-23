@@ -18,10 +18,7 @@ export default async function Colors() {
       <div className="grid md:grid-cols-2">
         <div>
           <SecondaryHeader title={data.title} />
-          <Paragraph
-            description={data.description}
-            className={"text-smoke text-sm md:text-base elza"}
-          />
+          <Paragraph description={data.description} className={"text-smoke"} />
         </div>
       </div>
       <div className="grid sm:grid-cols-2 my-14 md:my-20">
@@ -57,7 +54,7 @@ export default async function Colors() {
           />
           <Paragraph
             description={data.secondary_description}
-            className={"text-smoke text-sm md:text-base elza"}
+            className={"text-smoke"}
           />
         </div>
         <div className="grid grid-cols-4 sm:py-5 mt-5 sm:mt-0">

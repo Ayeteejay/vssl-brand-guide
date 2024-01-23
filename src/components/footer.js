@@ -26,7 +26,7 @@ export default async function Footer() {
             return (
               <Markdown
                 key={uuidv4()}
-                className={`markdown text-smoke text-sm md:text-base elza ${
+                className={`markdown text-smoke font-light text-sm antialiased md:text-base elza ${
                   index === 0 ? "mt-6" : "my-3"
                 }`}
               >

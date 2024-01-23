@@ -16,7 +16,7 @@ const getData = async () => {
 export default async function Grid() {
   const data = await getData();
   return (
-    <section className="relative max-w-5xl mx-auto px-8 mt-[500px] sm:mt-[400px] md:mt-0 pt-20 sm:pt-40 pb-20 sm:pb-28">
+    <section className="relative max-w-5xl mx-auto px-8 mt-[500px] sm:mt-[400px] md:mt-0 pt-20 sm:pt-40 pb-7 sm:pb-20">
       <div className="grid md:grid-cols-2">
         <div>
           <SecondaryHeader title={data.title} />
@@ -31,7 +31,7 @@ export default async function Grid() {
         alt={`${data.layout_image_magnified.data.attributes.alternativeText}`}
         width={1000}
         height={1000}
-        className="my-14 md:my-20 md:hidden"
+        className="my-12 sm:my-14 md:my-20 md:hidden"
       />
       <Image
         src={`${PORT}${data.layout_image.data.attributes.url}`}
